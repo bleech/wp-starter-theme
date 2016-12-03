@@ -16,6 +16,10 @@
           "pageModules": [
             {
               "name": "PostList"
+            },
+            {
+              "name": "PostButtonNavigation",
+              "dataFilter": "WPStarterTheme/DataFilters/PostButtonNavigation"
             }
           ]
         }

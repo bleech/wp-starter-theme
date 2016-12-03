@@ -1,0 +1,37 @@
+$maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
+$gutterWidth = $global-layout-gutterWidth is defined ? $global-layout-gutterWidth : 15px
+rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+
+$centerButtons = false
+$buttonSpacing = 3px
+
+[is='wps-post-button-navigation']
+  center($maxWidth, $gutterWidth)
+
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .buttons
+    background: #333
+    border-radius: 4px
+    margin-top: 15px
+    padding: 8px
+
+    if $centerButtons
+      text-align: center
+    else
+      clearfix()
+
+    &-prevPageButtonWrapper,
+    &-nextPageButtonWrapper
+      display: inline-block
+
+      if !$centerButtons
+        span(1/2, $cycle: 2)
+      else
+        margin: 0 $buttonSpacing
+
+    &-nextPageButtonWrapper
+      text-align: right
