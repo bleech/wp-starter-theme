@@ -1,0 +1,31 @@
+{
+  "name": "MainLayout",
+  "dataFilter": "WPStarterTheme/DataFilters/WpBase",
+  "areas": {
+    "mainHeader": [
+      {
+        "name": "MainNavigation",
+        "dataFilter": "WPStarterTheme/DataFilters/MainNavigation"
+      }
+    ],
+    "mainTemplate": [
+      {
+        "name": "Template",
+        "dataFilter": "WPStarterTheme/DataFilters/MainQuery/Single",
+        "areas": {
+          "pageModules": [
+            {
+              "name": "PostList"
+            }
+          ]
+        }
+      }
+    ],
+    "mainFooter": [
+      {
+        "name": "FooterNavigation",
+        "dataFilter": "WPStarterTheme/DataFilters/FooterNavigation"
+      }
+    ]
+  }
+}
