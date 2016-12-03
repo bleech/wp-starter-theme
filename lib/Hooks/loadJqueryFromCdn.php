@@ -8,7 +8,7 @@ namespace WPStarterTheme\Hooks;
  * Load jQuery from jQuery's CDN
  *
  * TODO add local fallback
- *
+ * TODO add cdn again just removed it because internet so slow
  */
 add_action('wp_enqueue_scripts', function () {
   $jqueryVersion = wp_scripts()->registered['jquery']->ver;
