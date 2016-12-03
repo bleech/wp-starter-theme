@@ -4,3 +4,72 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
 
 [is='wps-post-list']
   center($maxWidth, $gutterWidth)
+
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .postList
+    list-style: none
+    margin: 0
+    padding: 0
+
+    &-post
+      background: #f3f3f3
+      margin-bottom: 30px
+      padding: 15px
+
+      &:last-child
+        margin-bottom: 0
+
+    &-postWrapper
+      clearfix()
+
+    &-postImage
+      span(2/10, $cycle: 2)
+      padding-right: 15px
+
+      +below(2)
+        stack()
+        margin-bottom: 15px
+        padding: 0
+
+    &-postContent
+      span(8/10, $cycle: 2)
+
+      +below(2)
+        stack()
+
+    &-imageLink
+      display: block
+
+    &-thumb
+      height: auto
+      max-width: 100%
+
+    &-title
+      margin: 0 0 8px 0
+
+    &-excerpt
+      margin-bottom: 8px
+
+    &-readMore
+      display: block
+      font-weight: 600
+      margin-top: 15px
+
+    &-data
+      clearfix()
+      margin-top: 15px
+
+    &-categories,
+    &-tags
+      list-style: none
+      margin-top: 5px
+      padding: 0
+
+    &-category,
+    &-tag
+      display: inline-block
+      margin-right: 5px

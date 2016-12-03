@@ -1,11 +1,36 @@
+- $showExcerpt = true
+- $showCategories = true
+- $showTags = true
+- $showReadMore = true
+
 div(class=$data('baseClasses') is="wps-post-list")
   .content
     h2.content-title=$data('title')
   ul.postList
     for post in $data('posts')
       li.postList-post
-        h3.postList-title: a.postList-titleLink(href=post.url)=post.title
-        .postList-except=post.content
-        if(post.image)
-          a.postList-imageLink(href=post.url)
-            img.postList-thumb(src=post.image)
+        .postList-postWrapper
+          .postList-postImage
+            a.postList-imageLink(href=$data($post, 'url'))
+              if(post.image)
+                img.postList-thumb(src=$data($post, 'image'))
+              else
+                img.postList-thumb(src=$data('defaultImage'))
+          .postList-postContent
+            h4.postList-title: a.postList-titleLink(href=$data($post, 'url'))=$data($post, 'title')
+            if $showExcerpt
+              .postList-excerpt=$data($post, 'content')
+            if $showCategories || $showTags
+              .postList-data
+                if $showCategories
+                  ul.postList-categories
+                    if $data($post, 'categories')
+                      for category in $data($post, 'categories')
+                        li.postList-category: a.postList-categoryLink(href=$data($category, 'url'))= $data($category, 'name')
+                if $showTags
+                  ul.postList-tags
+                    if $data($post, 'tags')
+                      for tag in $data($post, 'tags')
+                        li.postList-tag: a.postList-tagLink(href=$data($tag, 'url'))= $data($tag, 'name')
+            if $showReadMore
+              a.postList-readMore(href=$data($post, 'url'))= $data('readMoreTitle')
