@@ -8,12 +8,11 @@ use WPStarterTheme\Helpers\Log;
 add_image_size('wpsPostListLg', 200, 200, true);
 add_image_size('wpsPostListSm', 768, 768, true);
 
-add_filter('WPStarter/modifyModuleData?name=PostList', function ($data) {
+add_filter('WPStarter/modifyModuleData?name=PostList', function ($data, $parentData) {
   $data['readMoreTitle'] = 'Read more';
 
-  $data['posts'] = apply_filters('WPStarterTheme/DataFilters/Posts', [], 5, 'long');
   $data['posts'] = array_map(function($post) {
-    $tags = get_the_tags($post->ID);
+    $tags = get_the_tags($post['ID']);
     if($tags) {
       $tags = array_map(function($tag) {
         return [
@@ -22,7 +21,7 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data) {
         ];
       }, $tags);
     }
-    $categories = get_the_category($post->ID);
+    $categories = get_the_category($post['ID']);
     if($categories) {
       $categories = array_map(function($cat) {
         return [
@@ -31,7 +30,7 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data) {
         ];
       }, $categories);
     }
-    $postImage = get_field('thumbnail', $post->ID);
+    $postImage = get_field('thumbnail', $post['ID']);
     $postImage['imageConfig'] = [
       'default' => 'wpsPostListLg',
       'sizes' => [
@@ -40,17 +39,17 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data) {
     ];
 
     return [
-      'title' => $post->title,
-      'content' => get_field('excerpt', $post->ID),
+      'title' => $post['post_title'],
+      'content' => get_field('excerpt', $post['ID']),
       'image' => $postImage,
-      'url' => $post->url,
+      'url' => $post['post_url'],
       'tags' => $tags,
       'categories' => $categories
     ];
-  }, $data['posts']);
+  }, $parentData['posts']);
 
   return $data;
-});
+}, 10, 2);
 
 add_action('wp_enqueue_scripts', function () {
   Module::enqueueAssets('PostList');

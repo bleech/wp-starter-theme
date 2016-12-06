@@ -11,7 +11,7 @@
     "mainTemplate": [
       {
         "name": "Template",
-        "dataFilter": "WPStarterTheme/DataFilters/MainQuery/Single",
+        "dataFilter": "WPStarterTheme/DataFilters/MainQuery",
         "areas": {
           "pageModules": [
             {
