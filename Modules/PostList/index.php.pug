@@ -1,3 +1,5 @@
+include ../MainLayout/PugMixins/picture.php.pug
+
 - $showExcerpt = true
 - $showCategories = true
 - $showTags = true
@@ -13,7 +15,8 @@ div(is="wps-post-list")
           .postList-postImage
             a.postList-imageLink(href=$data($post, 'url'))
               if(post.image)
-                img.postList-thumb(src=$data($post, 'image'))
+                - $image = $post['image']
+                +picture($image, 'postList')
               else
                 img.postList-thumb(src=$data('defaultImage'))
           .postList-postContent

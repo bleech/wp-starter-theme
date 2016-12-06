@@ -1,0 +1,29 @@
+{
+  "name": "postFields",
+  "title": "Post Fields",
+  "fields": [
+    {
+      "name": "excerpt",
+      "label": "Excerpt",
+      "type": "text",
+      "required": true,
+      "maxlength": 160
+    },
+    {
+      "name": "thumbnail",
+      "label": "Thumbnail",
+      "type": "image",
+      "required": true,
+      "mime_types": "jpg,jpeg"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ]
+}
