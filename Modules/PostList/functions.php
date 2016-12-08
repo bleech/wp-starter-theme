@@ -18,7 +18,7 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data, $parentD
   ];
 
   // Use overwriteQueryArgs so you can control the query from outside the module (customData, etc.)
-  if(isset($data['overwriteQueryArgs'])) {
+  if (isset($data['overwriteQueryArgs'])) {
     $data['queryArgs'] = array_replace($data['queryArgs'], $data['overwriteQueryArgs']);
   }
 
@@ -26,7 +26,7 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data, $parentD
   $data['posts'] = $data['query']->posts;
 
   // Check if Posts exists on this page
-  if(empty($data['posts'])) {
+  if (empty($data['posts'])) {
     wp_redirect('/notfound');
     exit;
   }
@@ -66,6 +66,7 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data, $parentD
       ]
     ];
     return [
+      // @codingStandardsIgnoreLine
       'title' => $post->post_title,
       'content' => get_field('excerpt', $post->ID),
       'image' => $postImage,
@@ -77,10 +78,6 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data, $parentD
 
   return $data;
 }, 10, 2);
-
-function getQueryArgs($queryArgs, $overwriteQueryArgs = []) {
-
-}
 
 add_action('wp_enqueue_scripts', function () {
   Module::enqueueAssets('PostList');
