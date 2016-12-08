@@ -9,12 +9,18 @@ add_filter('WPStarter/modifyModuleData?name=PostButtonNavigation', function ($da
   $meta = $parentData['meta'];
   $data['nextPageURL'] = false;
   $data['prevPageURL'] = false;
+  $data['labelPrevButton'] = get_field('prevLabel', 'option');
+  $data['labelNextButton'] = get_field('nextLabel', 'option');
   $blogURL = get_permalink(get_option('page_for_posts'));
-  if ($meta['current_page'] === 1 || $meta['current_page'] < $meta['max_num_pages']) {
-    $data['nextPageURL'] = $blogURL . 'page/' . ($meta['current_page'] + 1);
+  if($meta['currentPage'] === 0) {
+    $meta['currentPage'] = 1;
   }
-  if ($meta['current_page'] > 1) {
-    $data['prevPageURL'] = $blogURL . 'page/' . ($meta['current_page'] - 1);
+
+  if ($meta['currentPage'] === 1 || $meta['currentPage'] < $meta['maxNumPages']) {
+    $data['nextPageURL'] = $blogURL . 'page/' . ($meta['currentPage'] + 1);
+  }
+  if ($meta['currentPage'] > 1) {
+    $data['prevPageURL'] = $blogURL . 'page/' . ($meta['currentPage'] - 1);
   }
   return $data;
 }, 10, 2);

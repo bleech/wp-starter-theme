@@ -9,10 +9,36 @@ add_image_size('wpsPostListLg', 200, 200, true);
 add_image_size('wpsPostListSm', 768, 768, true);
 
 add_filter('WPStarter/modifyModuleData?name=PostList', function ($data, $parentData) {
-  $data['readMoreTitle'] = 'Read more';
+  $page = get_query_var('paged');
+  $maxPosts = get_field('postsPerPage', 'option');
+  $data['queryArgs'] = [
+    'post_type' => 'post',
+    'posts_per_page' => $maxPosts,
+    'paged' => $page
+  ];
+
+  // Use overwriteQueryArgs so you can control the query from outside the module (customData, etc.)
+  if(isset($data['overwriteQueryArgs'])) {
+    $data['queryArgs'] = array_replace($data['queryArgs'], $data['overwriteQueryArgs']);
+  }
+
+  $data['query'] = new \WP_Query($data['queryArgs']);
+  $data['posts'] = $data['query']->posts;
+
+  // Check if Posts exists on this page
+  if(empty($data['posts'])) {
+    wp_redirect('/notfound');
+    exit;
+  }
+
+  $data['meta'] = [
+    'maxNumPages' => $data['query']->max_num_pages,
+    'currentPage' => $page
+  ];
+  $data['readMoreTitle'] = get_field('moreTitle', 'option');
 
   $data['posts'] = array_map(function ($post) {
-    $tags = get_the_tags($post['ID']);
+    $tags = get_the_tags($post->ID);
     if ($tags) {
       $tags = array_map(function ($tag) {
         return [
@@ -22,7 +48,7 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data, $parentD
         ];
       }, $tags);
     }
-    $categories = get_the_category($post['ID']);
+    $categories = get_the_category($post->ID);
     if ($categories) {
       $categories = array_map(function ($cat) {
         return [
@@ -32,26 +58,29 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data, $parentD
         ];
       }, $categories);
     }
-    $postImage = get_field('thumbnail', $post['ID']);
+    $postImage = get_field('thumbnail', $post->ID);
     $postImage['imageConfig'] = [
       'default' => 'wpsPostListLg',
       'sizes' => [
         'wpsPostListSm' => '(max-width: 767px)'
       ]
     ];
-
     return [
-      'title' => $post['post_title'],
-      'content' => get_field('excerpt', $post['ID']),
+      'title' => $post->post_title,
+      'content' => get_field('excerpt', $post->ID),
       'image' => $postImage,
-      'url' => $post['post_url'],
+      'url' => get_permalink($post->ID),
       'tags' => $tags,
       'categories' => $categories
     ];
-  }, $parentData['posts']);
+  }, $data['posts']);
 
   return $data;
 }, 10, 2);
+
+function getQueryArgs($queryArgs, $overwriteQueryArgs = []) {
+
+}
 
 add_action('wp_enqueue_scripts', function () {
   Module::enqueueAssets('PostList');

@@ -11,15 +11,17 @@
     "mainTemplate": [
       {
         "name": "Template",
-        "dataFilter": "WPStarterTheme/DataFilters/MainQuery",
         "areas": {
           "pageModules": [
             {
-              "name": "PostList"
-            },
-            {
-              "name": "PostButtonNavigation",
-              "dataFilter": "WPStarterTheme/DataFilters/PostButtonNavigation"
+              "name": "PostList",
+              "areas": {
+                "afterPostList": [
+                  {
+                    "name": "PostButtonNavigation"
+                  }
+                ]
+              }
             }
           ]
         }

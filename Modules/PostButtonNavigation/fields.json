@@ -1,0 +1,18 @@
+{
+  "localeOptions": [
+    {
+      "name": "prevLabel",
+      "label": "Previous Page Label",
+      "type": "text",
+      "default_value": "Previous Page",
+      "required": true
+    },
+    {
+      "name": "nextLabel",
+      "label": "Next Page Label",
+      "type": "text",
+      "default_value": "Next Page",
+      "required": true
+    }
+  ]
+}

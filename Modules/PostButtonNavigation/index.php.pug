@@ -1,9 +1,9 @@
 - if($data('prevPageURL') || $data('nextPageURL'))
   div(is="wps-post-button-navigation")
     .buttons
-        .buttons-prevPageButtonWrapper
-          - if($data('prevPageURL'))
-            a.buttons-prevPageButton.btn.btnPrimary(href=$data('prevPageURL'))= $data('labelPrevButton')
-        .buttons-nextPageButtonWrapper
-          - if($data('nextPageURL'))
-            a.buttons-nextPageButton.btn.btnPrimary(href=$data('nextPageURL'))= $data('labelNextButton')
+      .buttons-prevPageButtonWrapper
+        - if($data('prevPageURL'))
+          a.buttons-prevPageButton.btn.btnPrimary(href=$data('prevPageURL'))= $data('labelPrevButton')
+      .buttons-nextPageButtonWrapper
+        - if($data('nextPageURL'))
+          a.buttons-nextPageButton.btn.btnPrimary(href=$data('nextPageURL'))= $data('labelNextButton')

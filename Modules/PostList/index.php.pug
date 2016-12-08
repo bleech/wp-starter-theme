@@ -6,8 +6,7 @@ include ../MainLayout/PugMixins/picture.php.pug
 - $showReadMore = true
 
 div(is="wps-post-list")
-  .content
-    h2.content-title=$data('title')
+  != $area('beforePostList')
   ul.postList
     for post in $data('posts')
       li.postList-post
@@ -37,3 +36,4 @@ div(is="wps-post-list")
                         li.postList-tag: a.postList-tagLink(href=$data($tag, 'url'))= $data($tag, 'name')
             if $showReadMore
               a.postList-readMore(href=$data($post, 'url'))= $data('readMoreTitle')
+  != $area('afterPostList')

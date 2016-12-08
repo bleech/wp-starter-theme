@@ -2,7 +2,7 @@ $maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140p
 $gutterWidth = $global-layout-gutterWidth is defined ? $global-layout-gutterWidth : 15px
 rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
 
-$centerButtons = false
+$centerButtons = true
 $buttonSpacing = 3px
 
 [is='wps-post-button-navigation']
@@ -14,11 +14,6 @@ $buttonSpacing = 3px
     box-sizing: border-box
 
   .buttons
-    background: #333
-    border-radius: 4px
-    margin-top: 15px
-    padding: 8px
-
     if $centerButtons
       text-align: center
     else
