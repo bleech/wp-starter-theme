@@ -29,7 +29,6 @@ class PostListFilter extends window.HTMLDivElement {
   changeFilter (e) {
     const $el = $(e.currentTarget)
     const target = $el.val()
-    
     if (target.length) {
       window.location = $el.val()
     }
