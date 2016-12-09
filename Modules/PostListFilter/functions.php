@@ -14,11 +14,14 @@ add_filter('WPStarter/modifyModuleData?name=PostListFilter', function ($data, $p
 
   foreach ($terms as $term) {
     $filters[$term->taxonomy][] = [
+      // @codingStandardsIgnoreLine
       'ID' => $term->term_id,
+      // @codingStandardsIgnoreLine
       'taxonomyID' => $term->term_taxonomy_id,
       'name' => $term->name,
       'lowerName' => strtolower($term->name),
       'count' => $term->count,
+      // @codingStandardsIgnoreLine
       'url' => get_term_link($term->term_id)
     ];
   }
