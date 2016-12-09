@@ -1,0 +1,12 @@
+div(is="wps-post-list-filter")
+  .postFilter
+    - if($data('filters', 'category'))
+      select.postFilter-categoryFilter
+        option(value='') Category
+        for category in $data('filters', 'category')
+          option(value=$data($category, 'url'))= $data($category, 'name')
+    - if($data('filters', 'post_tag'))
+      select.postFilter-tagFilter
+        option(value='') Tag
+        for tag in $data('filters', 'post_tag')
+          option(value=$data($tag, 'url'))= $data($tag, 'name')

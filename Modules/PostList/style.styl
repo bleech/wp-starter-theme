@@ -1,0 +1,63 @@
+$maxWidth = $global-layout-maxWidth is defined ? $global-layout-maxWidth : 1140px
+$gutterWidth = $global-layout-gutterWidth is defined ? $global-layout-gutterWidth : 15px
+rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+
+[is='wps-post-list']
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .postList
+    center($maxWidth, $gutterWidth)
+
+    &-posts
+      list-style: none
+      margin: 0
+      padding: 0
+
+    &-post
+      margin-bottom: 30px
+
+      &:last-child
+        margin-bottom: 0
+
+    &-postWrapper
+      clearfix()
+
+    &-postImage
+      span(2/10, $cycle: 2)
+
+      +below(2)
+        stack()
+
+    &-postContent
+      span(8/10, $cycle: 2)
+
+      +below(2)
+        stack()
+
+    &-imageLink
+      display: block
+
+    &-imageElement
+      height: auto
+      max-width: 100%
+
+    &-readMore
+      display: inline-block
+      font-weight: 600
+
+    &-data
+      clearfix()
+
+    &-categories,
+    &-tags
+      list-style: none
+      margin-top: 5px
+      padding: 0
+
+    &-category,
+    &-tag
+      display: inline-block
+      margin-right: 5px

@@ -1,13 +1,21 @@
 {
-  "layout": {
-    "name": "postList",
-    "label": "Post List",
-    "sub_fields": [
-      {
-        "name": "title",
-        "label": "Title",
-        "type": "text"
-      }
-    ]
-  }
+  "options": [
+    {
+      "name": "postsPerPage",
+      "label": "Posts per Page",
+      "type": "number",
+      "min": 1,
+      "default_value": 5,
+      "required": true
+    }
+  ],
+  "localeOptions": [
+    {
+      "name": "moreTitle",
+      "label": "More Label",
+      "type": "text",
+      "default_value": "Read more",
+      "required": true
+    }
+  ]
 }

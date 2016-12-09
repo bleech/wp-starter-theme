@@ -1,18 +1,19 @@
 [is='wps-main-layout']
-  .btn-primary
-    background-color: $global-color-brand
-    color: $global-color-text
+  .btn
+    background: #ccc
+    border-radius: 5px
+    border: 1px solid #aaa
+    color: #333
+    display: inline-block
+    margin: 5px 0
+    padding: 12px 18px
+    text-decoration: none
+    transition: background-color .3s ease
 
     &:hover
-      background-color: $global-color-brand
+      background: #aaa
+      color: #333
       text-decoration: none
-
-  .btn
-    border-radius: 5px
-    border: 1px solid
-    margin: 5px 0
-    padding: 10px 14px
-    transition: background-color .3s ease
 
     &.--block
       display: block
@@ -22,3 +23,12 @@
     &:active
       box-shadow: none
       outline: 0
+
+    &.btnPrimary
+      background-color: $global-color-brand || #333
+      border-color: darken($global-color-headline || #333, 10)
+      color: $global-color-brand-alt || #fff
+
+      &:hover
+        background-color: darken($global-color-brand || #fff, 10)
+        color: $global-color-brand-alt || #fff
