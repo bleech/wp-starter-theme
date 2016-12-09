@@ -17,6 +17,12 @@ add_filter('WPStarter/modifyModuleData?name=PostList', function ($data, $parentD
     'paged' => $page
   ];
 
+  if(isset($_GET['category']))
+    $data['queryArgs']['cat'] = $_GET['category'];
+
+  if(isset($_GET['tag']))
+    $data['queryArgs']['tag_id'] = $_GET['tag'];
+
   // Use overwriteQueryArgs so you can control the query from outside the module (customData, etc.)
   if (isset($data['overwriteQueryArgs'])) {
     $data['queryArgs'] = array_replace($data['queryArgs'], $data['overwriteQueryArgs']);

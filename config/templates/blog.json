@@ -16,6 +16,11 @@
             {
               "name": "PostList",
               "areas": {
+                "beforePostList": [
+                  {
+                    "name": "PostListFilter"
+                  }
+                ],
                 "afterPostList": [
                   {
                     "name": "PostButtonNavigation"

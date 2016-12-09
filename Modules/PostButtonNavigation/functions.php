@@ -12,7 +12,7 @@ add_filter('WPStarter/modifyModuleData?name=PostButtonNavigation', function ($da
   $data['labelPrevButton'] = get_field('prevLabel', 'option');
   $data['labelNextButton'] = get_field('nextLabel', 'option');
   $blogURL = get_permalink(get_option('page_for_posts'));
-  if($meta['currentPage'] === 0) {
+  if ($meta['currentPage'] === 0) {
     $meta['currentPage'] = 1;
   }
 

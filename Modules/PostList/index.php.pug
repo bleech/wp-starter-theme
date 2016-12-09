@@ -7,33 +7,34 @@ include ../MainLayout/PugMixins/picture.php.pug
 
 div(is="wps-post-list")
   != $area('beforePostList')
-  ul.postList
-    for post in $data('posts')
-      li.postList-post
-        .postList-postWrapper
-          .postList-postImage
-            a.postList-imageLink(href=$data($post, 'url'))
-              if(post.image)
-                - $image = $post['image']
-                +picture($image, 'postList')
-              else
-                img.postList-thumb(src=$data('defaultImage'))
-          .postList-postContent
-            h4.postList-title: a.postList-titleLink(href=$data($post, 'url'))=$data($post, 'title')
-            if $showExcerpt
-              .postList-excerpt=$data($post, 'content')
-            if $showCategories || $showTags
-              .postList-data
-                if $showCategories
-                  ul.postList-categories
-                    if $data($post, 'categories')
-                      for category in $data($post, 'categories')
-                        li.postList-category: a.postList-categoryLink(href=$data($category, 'url'))= $data($category, 'name')
-                if $showTags
-                  ul.postList-tags
-                    if $data($post, 'tags')
-                      for tag in $data($post, 'tags')
-                        li.postList-tag: a.postList-tagLink(href=$data($tag, 'url'))= $data($tag, 'name')
-            if $showReadMore
-              a.postList-readMore(href=$data($post, 'url'))= $data('readMoreTitle')
+  .postList(class=$data('moduleClass'))
+    ul.postList-posts
+      for post in $data('posts')
+        li.postList-post
+          .postList-postWrapper
+            .postList-postImage
+              a.postList-imageLink(href=$data($post, 'url'))
+                if(post.image)
+                  - $image = $post['image']
+                  +picture($image, 'postList')
+                else
+                  img.postList-thumb(src=$data('defaultImage'))
+            .postList-postContent
+              h4.postList-title: a.postList-titleLink(href=$data($post, 'url'))=$data($post, 'title')
+              if $showExcerpt
+                .postList-excerpt=$data($post, 'content')
+              if $showCategories || $showTags
+                .postList-data
+                  if $showCategories
+                    ul.postList-categories
+                      if $data($post, 'categories')
+                        for category in $data($post, 'categories')
+                          li.postList-category: a.postList-categoryLink(href=$data($category, 'url'))= $data($category, 'name')
+                  if $showTags
+                    ul.postList-tags
+                      if $data($post, 'tags')
+                        for tag in $data($post, 'tags')
+                          li.postList-tag: a.postList-tagLink(href=$data($tag, 'url'))= $data($tag, 'name')
+              if $showReadMore
+                a.postList-readMore(href=$data($post, 'url'))= $data('readMoreTitle')
   != $area('afterPostList')
