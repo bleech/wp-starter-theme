@@ -1,6 +1,6 @@
 <?php
 
-namespace Flynt\Helpers;
+namespace Flynt\AdminNotices;
 
 class AdminNoticeManager {
   protected static $instance = null;
