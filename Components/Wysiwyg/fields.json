@@ -17,11 +17,21 @@
     "label": "Wysiwyg",
     "sub_fields": [
       {
+        "name": "contentTab",
+        "label": "Content",
+        "type": "tab"
+      },
+      {
         "name": "contentHTML",
         "label": "Content",
         "type": "wysiwyg",
         "media_upload": 0,
         "required": 1
+      },
+      {
+        "name": "settingsTab",
+        "label": "Settings",
+        "type": "tab"
       },
       {
         "name": "theme",
