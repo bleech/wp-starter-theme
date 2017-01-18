@@ -1,10 +1,10 @@
 $trasitionTime = .3s
 $transitionEasing = ease
-$buttonColor = lookup('$global-color-play-button') || #f00
-$triangleColor = lookup('$global-color-triangle') || #fff
-$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
-$maxWidth = lookup('$global-layout-maxWidth') || 1140px
-rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+$buttonColor = lookup('$color-play-button') || #f00
+$triangleColor = lookup('$color-triangle') || #fff
+$gutterWidth = lookup('$layout-gutterWidth') || 15px
+$containerMaxWidth = lookup('$layout-containerMaxWidth') || 1140px
+$rupture.scale = lookup('$layout-scale') || (0 768px 992px 1200px)
 
 [is='wps-media-text-block']
   *,
@@ -17,7 +17,7 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
     width: 100%
 
   .mediaTextBlock
-    center($maxWidth, $gutterWidth)
+    center($containerMaxWidth, $gutterWidth)
 
     &-columnMedia,
     &-columnContentHtml

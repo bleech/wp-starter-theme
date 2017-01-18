@@ -1,8 +1,7 @@
-$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
-$maxWidth = lookup('$global-layout-maxWidth') || 1140px
-$fullWidth = lookup('$global-layout-fullWidth') || 100%
-$narrowWidth = lookup('$global-layout-narrowWidth') || 650px
-rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+$gutterWidth = lookup('$layout-gutterWidth') || 15px
+$containerMaxWidth = lookup('$layout-containerMaxWidth') || 1140px
+$narrowWidth = lookup('$layout-narrowWidth') || 650px
+$rupture.scale = lookup('$layout-scale') || (0 768px 992px 1200px)
 
 [is='wps-wysiwyg']
   *,
@@ -11,7 +10,7 @@ rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px
     box-sizing: border-box
 
   .wysiwyg
-    center($maxWidth, $gutterWidth)
+    center($containerMaxWidth, $gutterWidth)
 
     &-fullwidth
       center($fullwidthWidth, $gutterWidth)
