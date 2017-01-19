@@ -1,6 +1,6 @@
-$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
-$maxWidth = lookup('$global-layout-maxWidth') || 1140px
-rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
+$gutterWidth = lookup('$layout-gutterWidth') || 15px
+$containerMaxWidth = lookup('$layout-containerMaxWidth') || 1140px
+$rupture.scale = lookup('$layout-scale') || (0 768px 992px 1200px)
 
 $containerMaxWidth = 1440px // Width for the container if not using a container
 $useContainer = true // Use a container or a fluid wrapper
@@ -17,7 +17,7 @@ $fixedHeightMobile = 300px // Fixed Height for Mobile Resolutions
 
   .imageHero
     if $useContainer
-      center($maxWidth, $gutterWidth)
+      center($containerMaxWidth, $gutterWidth)
     else
       center($containerMaxWidth)
       padding-left: 0
