@@ -39,14 +39,14 @@ add_filter('Flynt/addComponentData?name=MainLayout', function ($data) {
   $context['post'] = Timber::get_post();
   $templateUrl = get_template_directory_uri();
 
-  $data['favicons'] = array_map(function($favicon) {
+  $data['favicons'] = array_map(function ($favicon) {
     return [
       'url' => $favicon['image']->abs_url,
       'size' => $favicon['size'] . 'x' . $favicon['size']
     ];
   }, $data['favicons']);
 
-  $data['touchIcons'] = array_map(function($touchIcon) {
+  $data['touchIcons'] = array_map(function ($touchIcon) {
     return [
       'url' => $touchIcon['image']->abs_url,
       'size' => $touchIcon['size'] . 'x' . $touchIcon['size']
