@@ -1,0 +1,89 @@
+{
+  "options": [
+    {
+      "label": "Favicons",
+      "type": "repeater",
+      "name": "favicons",
+      "collapsed": 1,
+      "min": 1,
+      "layout": "table",
+      "button_label": "Add Favicon",
+      "sub_fields": [
+        {
+          "label": "Image",
+          "name": "image",
+          "type": "image",
+          "instructions": "The favicon for your site. Should always be in a squared format like 16x16, 24x24, 32x32, 48x48 etc.",
+          "return_format": "url",
+          "preview_size": "thumbnail",
+          "library": "uploadedTo",
+          "min_width": 16,
+          "max_width": 64,
+          "min_height": 16,
+          "max_height": 64,
+          "min_size": 0,
+          "max_size": 0,
+          "mime_types": "png,ico",
+          "required": 1
+        },
+        {
+          "label": "Size",
+          "name": "size",
+          "type": "number",
+          "instructions": "The favicon width and height.",
+          "min": 16,
+          "max": 64,
+          "step": 8,
+          "required": 1,
+          "default_value": 16
+        }
+      ]
+    },
+    {
+      "label": "Apple Touch Icons",
+      "type": "repeater",
+      "name": "touch_icons",
+      "collapsed": 1,
+      "min": 1,
+      "max": 0,
+      "layout": "table",
+      "button_label": "Add Icon",
+      "sub_fields": [
+        {
+          "label": "Image",
+          "name": "image",
+          "type": "image",
+          "instructions": "The touch icon for your site. Should always be in a squared format like 57x57, 72x72, 114x144 etc. <strong>Recommended Size</strong>: 180x180",
+          "return_format": "url",
+          "preview_size": "thumbnail",
+          "library": "uploadedTo",
+          "min_width": 16,
+          "max_width": 180,
+          "min_height": 16,
+          "max_height": 180,
+          "min_size": 0,
+          "max_size": 0,
+          "mime_types": "png",
+          "required": 1
+        },
+        {
+          "label": "Size",
+          "name": "size",
+          "type": "number",
+          "instructions": "The touch icon width and height.",
+          "min": 16,
+          "max": 180,
+          "step": 1,
+          "required": 1,
+          "default_value": 180
+        }
+      ]
+    },
+    {
+      "label": "Android Color Scheme",
+      "name": "androidThemeColor",
+      "type": "color_picker",
+      "default_value": ""
+    }
+  ]
+}
