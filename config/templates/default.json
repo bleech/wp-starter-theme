@@ -20,10 +20,10 @@
                 "fieldGroup": "pageComponents"
               }
             }
-          ]
+          ],
+          "mainFooter": []
         }
       }
-    ],
-    "mainFooter": []
+    ]
   }
 }
