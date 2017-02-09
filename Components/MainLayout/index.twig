@@ -12,7 +12,6 @@
     {% endif %}
 
     <link rel="alternate" type="application/rss+xml" title="{{ feedTitle }}" href="{{ site.rss2|e('esc_url') }}">
-    <link rel="index" href="{{ pageUrl }}">
 
     {% for favicon in favicons %}
       <link href="{{ favicon.url|e('esc_url') }}" rel="shortcut icon" type="image/png" sizes="{{ favicon.size }}">
