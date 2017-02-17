@@ -36,13 +36,26 @@ add_action('wp_enqueue_scripts', function () {
 
 add_filter('Flynt/addComponentData?name=MainLayout', function ($data) {
   $context = Timber::get_context();
+  $context['post'] = Timber::get_post();
 
-  $output = array(
-    'appleTouchIcon180x180Path' => get_template_directory_uri() . '/apple-touch-icon-180x180.png',
-    'faviconPath' => get_template_directory_uri() . '/favicon.png',
-    'feedTitle' => $context['site']->name . ' ' . __('Feed'),
-    'dir' => is_rtl() ? 'rtl' : 'ltr'
-  );
+  $data['favicons'] = array_map(function ($favicon) {
+    return [
+      'url' => $favicon['image']->abs_url,
+      'size' => $favicon['size'] . 'x' . $favicon['size']
+    ];
+  }, $data['favicons']);
 
-  return array_merge($context, $data, $output);
+  $data['touchIcons'] = array_map(function ($touchIcon) {
+    return [
+      'url' => $touchIcon['image']->abs_url,
+      'size' => $touchIcon['size'] . 'x' . $touchIcon['size']
+    ];
+  }, $data['touch_icons']);
+
+  $data['pageUrl'] = get_home_url();
+
+  $data['feedTitle'] = $context['site']->name . ' ' . __('Feed');
+  $data['dir'] = is_rtl() ? 'rtl' : 'ltr';
+
+  return array_merge($context, $data);
 });
