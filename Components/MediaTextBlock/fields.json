@@ -13,31 +13,6 @@
     "label": "Media Text Block",
     "sub_fields": [
       {
-        "name": "settingsTab",
-        "label": "Settings",
-        "type": "tab"
-      },
-      {
-        "name": "mediaPosition",
-        "label": "Media Position",
-        "type": "select",
-        "choices": {
-          "mediaLeft": "Left",
-          "mediaRight": "Right"
-        },
-        "default_value": ""
-      },
-      {
-        "name": "mediaType",
-        "label": "Media Type",
-        "type": "select",
-        "choices": {
-          "mediaImage": "Image",
-          "mediaVideo": "Video"
-        },
-        "default_value": ""
-      },
-      {
         "name": "contentTab",
         "label": "Content",
         "type": "tab"
@@ -96,6 +71,31 @@
         "type": "wysiwyg",
         "media_upload": 0,
         "required": 1
+      },
+      {
+        "name": "settingsTab",
+        "label": "Settings",
+        "type": "tab"
+      },
+      {
+        "name": "mediaPosition",
+        "label": "Media Position",
+        "type": "select",
+        "choices": {
+          "mediaLeft": "Left",
+          "mediaRight": "Right"
+        },
+        "default_value": ""
+      },
+      {
+        "name": "mediaType",
+        "label": "Media Type",
+        "type": "select",
+        "choices": {
+          "mediaImage": "Image",
+          "mediaVideo": "Video"
+        },
+        "default_value": ""
       }
     ]
   }
