@@ -46,7 +46,7 @@ class GoogleAnalytics {
       ga('set', 'anonymizeIp', true);
       <?php endif; ?>
     </script>
-    <?
+    <?php
   }
 
   private function isValidId($gaId) {
