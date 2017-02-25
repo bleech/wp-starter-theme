@@ -63,7 +63,6 @@ class FileLoader {
   }
 
   public static function loadPhpFiles($dir = '', $files = []) {
-    $fileExtension = 'php';
     self::loadFilesWithExtension('php', $dir, $files);
   }
 }
