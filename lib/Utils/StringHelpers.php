@@ -11,7 +11,7 @@ class StringHelpers {
     if(isset($str)) {
       return wp_trim_words(wp_strip_all_tags( $str ), $length, '...');
     }
-    return false;
+    return '';
   }
 
   public static function splitCamelCase($str) {
