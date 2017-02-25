@@ -65,23 +65,28 @@ class FieldGroupComposer {
     $componentName = ucfirst($componentName);
 
     // add filters
-    foreach ($fields as $groupKey => $groupValue) {
-      $groupKey = ucfirst($groupKey);
-      $filterName = self::FILTER_NAMESPACE . "/{$componentName}/Fields/{$groupKey}";
+    if ($fields) {
+      foreach ( $fields as $groupKey => $groupValue ) {
+        $groupKey   = ucfirst( $groupKey );
+        $filterName = self::FILTER_NAMESPACE . "/{$componentName}/Fields/{$groupKey}";
 
-      add_filter($filterName, function ($config) use ($groupValue) {
-        return $groupValue;
-      });
-      if (ArrayHelpers::isAssoc($groupValue) && array_key_exists('sub_fields', $groupValue)) {
-        $filterName .= '/SubFields';
-        $subFields = $groupValue['sub_fields'];
+        add_filter( $filterName, function ( $config ) use ( $groupValue ) {
+          return $groupValue;
+        } );
+        if ( ArrayHelpers::isAssoc( $groupValue ) && array_key_exists( 'sub_fields',
+            $groupValue )
+        ) {
+          $filterName .= '/SubFields';
+          $subFields = $groupValue['sub_fields'];
 
-        add_filter($filterName, function ($subFieldsconfig) use ($subFields) {
-          return $subFields;
-        });
-        self::addFilterForSubFields($filterName, $subFields);
-      } elseif (is_array($groupValue)) {
-        self::addFilterForSubFields($filterName, $groupValue);
+          add_filter( $filterName,
+            function ( $subFieldsconfig ) use ( $subFields ) {
+              return $subFields;
+            } );
+          self::addFilterForSubFields( $filterName, $subFields );
+        } elseif ( is_array( $groupValue ) ) {
+          self::addFilterForSubFields( $filterName, $groupValue );
+        }
       }
     }
   }
