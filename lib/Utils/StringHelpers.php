@@ -8,7 +8,7 @@ class StringHelpers {
   }
 
   public static function trimStrip($str, $length = 25) {
-    if (isset($str)) {
+    if(isset($str)) {
       return wp_trim_words(wp_strip_all_tags($str), $length, '...');
     }
     return '';
