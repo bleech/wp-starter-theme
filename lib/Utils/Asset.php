@@ -10,14 +10,16 @@ class Asset {
     $distUrl = get_template_directory_uri() . '/dist';
     if (!isset(self::$assetManifest)) {
       $manifestPath = $distPath . '/rev-manifest.json';
-      self::$assetManifest = [];
       if (is_file($manifestPath)) {
         self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
+      } else {
+        self::$assetManifest = [];
       }
     }
-    $assetSuffix = $asset;
     if (array_key_exists($asset, self::$assetManifest)) {
       $assetSuffix = self::$assetManifest[$asset];
+    } else {
+      $assetSuffix = $asset;
     }
     return $distUrl . '/' . $assetSuffix;
   }
@@ -26,14 +28,16 @@ class Asset {
     $distPath = get_template_directory() . '/dist';
     if (!isset(self::$assetManifest)) {
       $manifestPath = $distPath . '/rev-manifest.json';
-      self::$assetManifest = [];
       if (is_file($manifestPath)) {
         self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
+      } else {
+        self::$assetManifest = [];
       }
     }
-    $assetSuffix = $asset;
     if (array_key_exists($asset, self::$assetManifest)) {
       $assetSuffix = self::$assetManifest[$asset];
+    } else {
+      $assetSuffix = $asset;
     }
     return $distPath . '/' . $assetSuffix;
   }
