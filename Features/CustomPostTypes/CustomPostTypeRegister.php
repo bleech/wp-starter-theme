@@ -12,7 +12,6 @@ class CustomPostTypeRegister {
 
   public static function fromDir($dir, $fileName) {
     self::$fileName = $fileName;
-
     $postTypesConfig = self::getConfigs($dir);
 
     if(empty($postTypesConfig)) return;
@@ -111,7 +110,12 @@ class CustomPostTypeRegister {
           self::$registeredCustomPostTypes[$name] = [
             'dir' => $dir
           ];
-          return array_merge(self::getConfigFromJson($configPath), ['name' => $name]);
+          $configFromJson = self::getConfigFromJson($configPath);
+          if ($configFromJson) {
+            return array_merge($configFromJson, ['name' => $name]);
+          } else {
+            return array();
+          }
         }
       }
       return null;
@@ -121,6 +125,10 @@ class CustomPostTypeRegister {
   }
 
   protected static function getConfigFromJson($filePath) {
-    return json_decode(file_get_contents($filePath), true);
+    $jsonOutput = json_decode(file_get_contents($filePath), true);
+    if ($jsonOutput === null) {
+      trigger_error($filePath . ' contains invalid JSON', E_USER_WARNING);
+    }
+    return $jsonOutput;
   }
 }
