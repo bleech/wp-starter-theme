@@ -1,15 +1,15 @@
 {
-  "name": "MainLayout",
+  "name": "DocumentDefault",
   "areas": {
-    "mainTemplate": [
+    "layoutDefault": [
       {
-        "name": "MainTemplate",
+        "name": "LayoutSinglePost",
         "areas": {
           "mainHeader": [
             {
-              "name": "MainNavigation",
+              "name": "NavigationMain",
               "customData": {
-                "menuSlug": "main_navigation"
+                "menuSlug": "navigation_main"
               }
             }
           ],
