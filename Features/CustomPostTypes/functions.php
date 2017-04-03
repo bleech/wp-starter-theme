@@ -3,6 +3,7 @@
 namespace Flynt\Features\CustomPostTypes;
 
 require_once __DIR__ . '/CustomPostTypeRegister.php';
+require_once __DIR__ . '/Translator.php';
 
 use Flynt\Utils\Feature;
 use Flynt\Features\CustomPostTypes\CustomPostTypeRegister;
