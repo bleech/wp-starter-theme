@@ -1,7 +1,7 @@
 {
   "name": "DocumentDefault",
   "areas": {
-    "layoutDefault": [
+    "layout": [
       {
         "name": "LayoutMultiplePosts",
         "areas": {

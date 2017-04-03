@@ -1,7 +1,7 @@
 {
   "name": "DocumentDefault",
   "areas": {
-    "layoutDefault": [
+    "layout": [
       {
         "name": "LayoutSinglePost",
         "areas": {
@@ -15,7 +15,7 @@
           ],
           "pageComponents": [
             {
-              "name": "FlexibleContent",
+              "name": "ComponentLoaderFlexible",
               "customData": {
                 "fieldGroup": "pageComponents"
               }
