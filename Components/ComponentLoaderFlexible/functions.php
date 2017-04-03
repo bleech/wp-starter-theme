@@ -6,11 +6,10 @@ use Flynt\Features\Acf\OptionPages;
 
 add_filter('Flynt/addComponentData?name=ComponentLoaderFlexible', function ($data) {
     $optionPage = (array_key_exists('optionPage', $data)) ? $data['optionPage'] : [];
-
     if (is_array($optionPage) &&
-    array_key_exists('optionType', $optionPage) &&
-    array_key_exists('optionCategory', $optionPage) &&
-    array_key_exists('subPageName', $optionPage)
+        array_key_exists('optionType', $optionPage) &&
+        array_key_exists('optionCategory', $optionPage) &&
+        array_key_exists('subPageName', $optionPage)
     ) {
         $options = OptionPages::getOptions(
             $optionPage['optionType'],
@@ -19,22 +18,20 @@ add_filter('Flynt/addComponentData?name=ComponentLoaderFlexible', function ($dat
         );
         $data = array_merge($data, $options);
     }
-
     return $data;
 });
 
 add_filter('Flynt/dynamicSubcomponents?name=ComponentLoaderFlexible', function ($areas, $data, $parentData) {
     $fieldGroup = $data['fieldGroup'];
     if (array_key_exists($fieldGroup, $data) &&
-    $data[$fieldGroup] !== false
+        $data[$fieldGroup] !== false
     ) {
         $fieldGroupData = $data[$fieldGroup];
     } elseif (array_key_exists($fieldGroup, $parentData['post']->fields) &&
-    $parentData['post']->fields[$fieldGroup] !== false
+        $parentData['post']->fields[$fieldGroup] !== false
     ) {
         $fieldGroupData = $parentData['post']->fields[$fieldGroup];
     }
-
     if (isset($fieldGroupData)) {
         $areas['compontents'] = array_map(function ($field) use ($parentData) {
             return [
@@ -44,6 +41,5 @@ add_filter('Flynt/dynamicSubcomponents?name=ComponentLoaderFlexible', function (
             ];
         }, $fieldGroupData);
     }
-
     return $areas;
 }, 10, 3);
