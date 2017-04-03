@@ -120,7 +120,10 @@ class CustomPostTypeRegister
                     self::$registeredCustomPostTypes[$name] = [
                         'dir' => $dir
                     ];
-                    return array_merge(self::getConfigFromJson($configPath), ['name' => $name]);
+                    $config = self::getConfigFromJson($configPath);
+                    if (!empty($config)) {
+                        return array_merge($config, ['name' => $name]);
+                    }
                 }
             }
             return null;
