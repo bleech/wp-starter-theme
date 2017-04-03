@@ -33,7 +33,7 @@ add_filter('Flynt/dynamicSubcomponents?name=ComponentLoaderFlexible', function (
         $fieldGroupData = $parentData['post']->fields[$fieldGroup];
     }
     if (isset($fieldGroupData)) {
-        $areas['compontents'] = array_map(function ($field) use ($parentData) {
+        $areas['components'] = array_map(function ($field) use ($parentData) {
             return [
                 'name' => ucfirst($field['acf_fc_layout']),
                 'customData' => $field,
