@@ -51,10 +51,13 @@ class Translator
         }
 
         if (is_array($value)) {
-            // assuming it's a single dimension
-            return array_map(function ($item, $context) {
-                return _x($item, $context, 'flynt-theme');
-            }, $value, array_keys($value));
+            // Loop through array and apply translations while keeping keys intact
+            // NOTE: assuming it's a single dimensional array
+            return array_reduce(array_keys($value), function ($carry, $key) use ($value) {
+                return array_merge($carry, [
+                    $key => _x($value[$key], $key, 'flynt-theme')
+                ]);
+            }, []);
         } else {
             $context = array_pop($args);
             return _x($value, $context, 'flynt-theme');
