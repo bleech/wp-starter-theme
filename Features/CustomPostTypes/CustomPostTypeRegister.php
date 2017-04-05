@@ -3,6 +3,7 @@
 namespace Flynt\Features\CustomPostTypes;
 
 use Flynt\Features\CustomPostTypes\Translator;
+use Flynt\Utils\StringHelpers;
 use Flynt\Utils\FileLoader;
 
 class CustomPostTypeRegister
@@ -72,7 +73,7 @@ class CustomPostTypeRegister
 
                 if (is_file($configPath)) {
                     $dir = $file->getPathname();
-                    $name = $file->getFilename();
+                    $name = StringHelpers::camelCaseToKebap($file->getFilename());
                     self::$registeredCustomPostTypes[$name] = [
                         'dir' => $dir
                     ];
