@@ -27,7 +27,6 @@ class Translator
         $config['labels'] = self::translateNestedValues($config, 'labels');
         $config['singular_label'] = self::translateNestedValues($config, 'singular_label');
         $config['description'] = self::translateNestedValues($config, 'description');
-        $config['rewrite']['slug'] = self::translateNestedValues($config, 'rewrite', 'slug');
 
         return $config;
     }
