@@ -2,7 +2,7 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-The recommended boilerplate for building [Flynt](https://flyntwp.com/) projects.
+The starter theme for building [Flynt](https://flyntwp.com/) projects.
 
 ## Table of Contents
 
@@ -17,13 +17,13 @@ The recommended boilerplate for building [Flynt](https://flyntwp.com/) projects.
 
 Flynt is a sustainable approach to website development and content management with a component-based philosophy.
 
-Flynt Theme is a ready-to-go Wordpress theme that implements all of Flynt's best practices.
+Flynt Theme is a ready-to-go WordPress theme that implements all of Flynt's best practices.
 
 ## Install
 
 1. Install [Node](https://nodejs.org/en/).
 2. Install [Yarn](https://yarnpkg.com/lang/en/docs/install/).
-3. Create a new project folder and setup a new [Wordpress](https://wordpress.org/download/) installation.
+3. Create a new project folder and setup a new [WordPress](https://wordpress.org/download/) installation.
 4. Install and activate the following plugins:
   - [Flynt Core](https://github.com/flyntwp/flynt-core)
   - [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/)
@@ -35,7 +35,7 @@ Flynt Theme is a ready-to-go Wordpress theme that implements all of Flynt's best
 const host = 'your-host-url.dev'
 ```
 7. In your terminal, navigate to `<your-project>\wp-content\themes\flynt-theme` and run `yarn`.
-8. Go to the administrator back-end of your Wordpress site and activate the `flynt-theme` theme.
+8. Go to the administrator back-end of your WordPress site and activate the `flynt-theme` theme.
 
 ## Usage
 
@@ -67,13 +67,9 @@ flynt-theme/                     # → Root of the theme
 │   ├── Init.php                 # → Setup theme, register features
 ├── node_modules/                # → Node.js packages (never edit)
 ├── templates/                   # → Page templates (PHP)
-├── .env                         # → Configures dev environment
-├── .flynt.json                  # → Configures Flynt
 ├── .gitignore                   # → Files/Folders that will not be committed to Git.
 ├── .stylintrc                   # → Define Stylus linting rules
 ├── bower.json                   # → Bower dependencies
-├── composer.json                # → Composer dependencies
-├── composer.lock                # → Composer lock file (never edit)
 ├── functions.php                # → Set template directory and load lib/Init.php
 ├── index.php                    # → Theme entry point (never edit)
 ├── package.json                 # → Node.js dependencies and scripts
