@@ -29,13 +29,13 @@ Flynt Theme is a ready-to-go Wordpress theme that implements all of Flynt's best
   - [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/)
   - [ACF Field Group Composer](https://github.com/flyntwp/acf-field-group-composer)
   - [Timber](https://wordpress.org/plugins/timber-library/)
-5. Clone the flynt-theme repo to the `<your-project>\wp-content\themes\` folder.
+5. Clone the flynt-theme repo to `<your-project>\wp-content\themes\`.
 6. Change the host variable in `flynt-theme\gulpfile.js\config.js` to match your host URL.
 ```js
 const host = 'your-host-url.dev'
 ```
 7. In your terminal, navigate to `<your-project>\wp-content\themes\flynt-theme` and run `yarn`.
-8. Go to the administrator back-end of your Wordpress site and under "Appearance -> Themes" active `flynt-theme`.
+8. Go to the administrator back-end of your Wordpress site and activate the `flynt-theme` theme.
 
 ## Usage
 
