@@ -2,7 +2,7 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-The Flynt Theme is the recommended boilerplate for building Flynt projects.
+The recommended boilerplate for building [Flynt](https://flyntwp.com/) projects.
 
 ## Table of Contents
 
@@ -15,9 +15,35 @@ The Flynt Theme is the recommended boilerplate for building Flynt projects.
 
 ## Background
 
-Flynt is a sustainable approach to website development and content management with a component-based philosophy, built on Wordpress. This repo provides a ready-to-go theme that implements all of Flynt's best practices.
+Flynt is a sustainable approach to website development and content management with a component-based philosophy.
 
-The theme comes with a default selection of base components and features to aid in quick development.
+Flynt Theme is a ready-to-go Wordpress theme that implements all of Flynt's best practices.
+
+## Install
+
+1. Install [Node](https://nodejs.org/en/).
+2. Install [Yarn](https://yarnpkg.com/lang/en/docs/install/).
+3. Create a new project folder and setup a new [Wordpress](https://wordpress.org/download/) installation.
+4. Install and activate the following plugins:
+  - [Flynt Core](https://github.com/flyntwp/flynt-core)
+  - [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/)
+  - [ACF Field Group Composer](https://github.com/flyntwp/acf-field-group-composer)
+  - [Timber](https://wordpress.org/plugins/timber-library/)
+5. Clone the flynt-theme repo to the `<your-project>\wp-content\themes\` folder.
+6. Change the host variable in `flynt-theme\gulpfile.js\config.js` to match your host URL.
+```js
+const host = 'your-host-url.dev'
+```
+7. In your terminal, navigate to `<your-project>\wp-content\themes\flynt-theme` and run `yarn`.
+8. Go to the administrator back-end of your Wordpress site and under "Appearance -> Themes" active `flynt-theme`.
+
+## Usage
+
+In your terminal, navigate to `<your-project>\wp-content\themes\flynt-theme` and run `yarn start`. This will start a local server at  `localhost:3000`.
+
+Changes to files made in `Components` and `Features` will now be watched for changes and compiled to the `dist` folder.
+
+**The full documentation is coming soon.**
 
 ### Theme Structure
 
@@ -56,32 +82,6 @@ flynt-theme/                     # → Root of the theme
 ├── style.css                    # → Required WordPress theme style file.
 ├── yarn.lock                    # → Yarn lock file (never edit)
 ```
-
-## Install
-
-1. Install [Node](https://nodejs.org/en/).
-2. Install [Yarn](https://yarnpkg.com/lang/en/docs/install/).
-3. Create a new project folder and setup a new [Wordpress](https://wordpress.org/download/) installation.
-4. Install and activate the following plugins:
-  - [Flynt Core](https://github.com/flyntwp/flynt-core)
-  - [Advanced Custom Fields Pro](https://www.advancedcustomfields.com/pro/)
-  - [ACF Field Group Composer](https://github.com/flyntwp/acf-field-group-composer)
-  - [Timber](https://wordpress.org/plugins/timber-library/)
-5. Clone the flynt-theme repo to the `<your-project>\wp-content\themes\` folder.
-6. Change the host variable in `flynt-theme\gulpfile.js\config.js` to match your host URL.
-```js
-const host = 'your-host-url.dev'
-```
-7. In your terminal, navigate to `<your-project>\wp-content\themes\flynt-theme` and run `yarn`.
-8. Go to the administrator back-end of your Wordpress site and under "Appearance -> Themes" active `flynt-theme`.
-
-## Usage
-
-In your terminal, navigate to `<your-project>\wp-content\themes\flynt-theme` and run `yarn start`. This will start a local server at  `localhost:3000`.
-
-Changes to files made in `Components` and `Features` will now be watched for changes and compiled to the `dist` folder.
-
-**The full documentation is coming soon.**
 
 ## Maintainers
 
