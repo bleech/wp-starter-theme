@@ -34,7 +34,7 @@ Flynt Theme is a ready-to-go WordPress theme that implements all of Flynt's best
 ```js
 const host = 'your-host-url.dev'
 ```
-7. In your terminal, navigate to `<your-project>\wp-content\themes\flynt-theme` and run `yarn`.
+7. In your terminal, navigate to `<your-project>\wp-content\themes\flynt-theme`. Run `yarn` and then `yarn build`.
 8. Go to the administrator back-end of your WordPress site and activate the `flynt-theme` theme.
 
 ## Usage
