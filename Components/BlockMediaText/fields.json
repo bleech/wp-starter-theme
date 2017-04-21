@@ -19,7 +19,7 @@
         "default_value": ""
       },
       {
-        "name": "image2",
+        "name": "image",
         "label": "Image",
         "type": "image",
         "mime_types": "jpg,jpeg",
@@ -68,7 +68,7 @@
         ]
       },
       {
-        "name": "contentHTML2",
+        "name": "contentHTML",
         "label": "Content",
         "type": "wysiwyg",
         "media_upload": 0,
