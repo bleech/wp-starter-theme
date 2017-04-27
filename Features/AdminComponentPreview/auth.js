@@ -33,7 +33,7 @@ function hideImages () {
 }
 
 function getComponentImages (output = {}) {
-  $('.pageWrapper [is]').each(function () {
+  $('.pageWrapper [is^="flynt-"]').each(function () {
     const componentString = $(this).attr('is')
     let componentName = $.camelCase(componentString.substring(componentString.indexOf('-') + 1))
     componentName = helper.firstToUpperCase(componentName)
