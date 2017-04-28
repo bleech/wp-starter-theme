@@ -40,6 +40,24 @@
       "fullscreen"
     ]
   ],
+  "BlockIconWysiwyg": [
+    [
+      "bold",
+      "italic",
+      "underline",
+      "link",
+      "unlink",
+      "|",
+      "pastetext",
+      "copy",
+      "paste",
+      "undo",
+      "redo",
+      "|",
+      "removeformat",
+      "fullscreen"
+    ]
+  ],
   "CustomToolbar": [
     [
     "bold",
