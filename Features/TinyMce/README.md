@@ -147,3 +147,14 @@ add_editor_style('Features/TinyMce/customEditorStyle.css');
 ```
 
 Call the `add_editor_style` function and pass as a parameter your stylesheet file path (that we called `customEditorStyle.css` here). This file must be present inside this `TinyMce` feature.
+
+### Adding custom toolbars
+
+Open `toolbars.json` and add your toolbar configuration to the toolbar Array. This will automatically be loaded. You can call the toolbar inside your ACF configuration in lowercase.
+
+**Example**:<br>
+`CustomToolbar` ==> `"toolbar": "customtoolbar"`
+
+### Adding new Style Formats via JSON
+
+Open `styleformats.json` and add your configuration to the styleformats Array. This will automatically be loaded.
