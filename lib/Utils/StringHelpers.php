@@ -50,4 +50,13 @@ class StringHelpers
     {
         return substr($subject, 0, strlen($search)) === $search;
     }
+
+    public static function endsWith($search, $subject)
+    {
+        $length = strlen($search);
+        if ($length == 0) {
+            return true;
+        }
+        return substr($subject, -$length) === $search;
+    }
 }
