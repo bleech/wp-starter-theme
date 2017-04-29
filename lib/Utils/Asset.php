@@ -33,7 +33,7 @@ class Asset
         return self::add('enqueue', $options);
     }
 
-    private static function get($returnType, $asset)
+    protected static function get($returnType, $asset)
     {
         $distPath = get_template_directory() . '/dist';
 
@@ -62,7 +62,7 @@ class Asset
         return false;
     }
 
-    private static function add($funcType, $options)
+    protected static function add($funcType, $options)
     {
         // TODO add cdn functionality
         $options = array_merge(self::DEFAULT_OPTIONS, $options);
