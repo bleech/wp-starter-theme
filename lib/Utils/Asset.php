@@ -4,6 +4,13 @@ namespace Flynt\Utils;
 
 class Asset
 {
+    const DEFAULT_OPTIONS = [
+        'dependencies' => [],
+        'version' => null,
+        'inFooter' => true,
+        'media' => 'all'
+    ];
+
     protected static $assetManifest;
 
     public static function requireUrl($asset)
@@ -43,5 +50,52 @@ class Asset
             $assetSuffix = $asset;
         }
         return $distPath . '/' . $assetSuffix;
+    }
+
+    public static function add($funcType, $options)
+    {
+        if (!in_array($funcType, ['enqueue', 'register'])) {
+            trigger_error('Cannot add asset: Invalid Parameter for funcType (' . $funcType . ')', E_USER_WARNING);
+            return false;
+        }
+
+        // TODO add cdn functionality
+        $options = array_merge(self::DEFAULT_OPTIONS, $options);
+
+        if (!array_key_exists('name', $options)) {
+            trigger_error('Cannot add asset: Name not provided!', E_USER_WARNING);
+            return false;
+        }
+
+        if (!array_key_exists('path', $options)) {
+            trigger_error('Cannot add asset: Path not provided!', E_USER_WARNING);
+            return false;
+        }
+
+        $funcName = "wp_{$funcType}_{$options['type']}";
+        $lastVar = $options['type'] === 'script' ? $options['inFooter'] : $options['media'];
+
+        // allow external urls
+        $path = $options['path'];
+        if (!(StringHelpers::startsWith('http://', $path))
+            && !(StringHelpers::startsWith('https://', $path))
+            && !(StringHelpers::startsWith('//', $path))
+        ) {
+            $path = Asset::requireUrl($options['path']);
+        }
+
+        if (function_exists($funcName)) {
+            $funcName(
+                $options['name'],
+                $path,
+                $options['dependencies'],
+                $options['version'],
+                $lastVar
+            );
+
+            return true;
+        }
+
+        return false;
     }
 }
