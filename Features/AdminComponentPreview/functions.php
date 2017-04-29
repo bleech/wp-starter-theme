@@ -7,20 +7,20 @@ define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 
 function enqueueComponentScripts()
 {
-    Asset::add('register', [
+    Asset::register([
         'type' => 'script',
         'name' => 'draggabilly',
         'path' => 'vendor/draggabilly.js'
     ]);
 
-    Asset::add('enqueue', [
+    Asset::enqueue([
         'type' => 'script',
         'name' => 'Flynt/Features/AdminComponentPreview',
         'path' => 'Features/AdminComponentPreview/script.js',
         'dependencies' => ['jquery', 'draggabilly']
     ]);
 
-    Asset::add('enqueue', [
+    Asset::enqueue([
         'type' => 'style',
         'name' => 'Flynt/Features/AdminComponentPreview',
         'path' => 'Features/AdminComponentPreview/style.css'

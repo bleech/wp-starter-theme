@@ -52,13 +52,18 @@ class Asset
         return $distPath . '/' . $assetSuffix;
     }
 
-    public static function add($funcType, $options)
+    public static function register($options)
     {
-        if (!in_array($funcType, ['enqueue', 'register'])) {
-            trigger_error('Cannot add asset: Invalid Parameter for funcType (' . $funcType . ')', E_USER_WARNING);
-            return false;
-        }
+        return self::add('register', $options);
+    }
 
+    public static function enqueue($options)
+    {
+        return self::add('enqueue', $options);
+    }
+
+    private static function add($funcType, $options)
+    {
         // TODO add cdn functionality
         $options = array_merge(self::DEFAULT_OPTIONS, $options);
 

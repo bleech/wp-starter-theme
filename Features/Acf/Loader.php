@@ -27,13 +27,13 @@ class Loader
 
             // add styles for admin area
             add_action('admin_enqueue_scripts', function () {
-                Asset::add('enqueue', [
+                Asset::enqueue([
                     'type' => 'style',
                     'name' => 'Flynt/Features/Acf/AdminCss',
                     'path' => 'Features/Acf/admin.css'
                 ]);
 
-                Asset::add('enqueue', [
+                Asset::enqueue([
                     'type' => 'script',
                     'name' => 'Flynt/Features/Acf/AdminJs',
                     'path' => 'Features/Acf/admin.js',
