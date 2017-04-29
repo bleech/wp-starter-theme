@@ -31,7 +31,7 @@ class Bootstrap
             });
 
             add_filter('template_include', function () {
-                $newTemplate = locate_template(array('plugin-inactive.php'));
+                $newTemplate = locate_template(['plugin-inactive.php']);
                 if ('' != $newTemplate) {
                     return $newTemplate;
                 } else {
