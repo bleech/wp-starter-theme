@@ -15,41 +15,12 @@ class Asset
 
     public static function requireUrl($asset)
     {
-        $distPath = get_template_directory() . '/dist';
-        $distUrl = get_template_directory_uri() . '/dist';
-        if (!isset(self::$assetManifest)) {
-            $manifestPath = $distPath . '/rev-manifest.json';
-            if (is_file($manifestPath)) {
-                self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
-            } else {
-                self::$assetManifest = [];
-            }
-        }
-        if (array_key_exists($asset, self::$assetManifest)) {
-            $assetSuffix = self::$assetManifest[$asset];
-        } else {
-            $assetSuffix = $asset;
-        }
-        return $distUrl . '/' . $assetSuffix;
+        return self::get('url', $asset);
     }
 
     public static function requirePath($asset)
     {
-        $distPath = get_template_directory() . '/dist';
-        if (!isset(self::$assetManifest)) {
-            $manifestPath = $distPath . '/rev-manifest.json';
-            if (is_file($manifestPath)) {
-                self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
-            } else {
-                self::$assetManifest = [];
-            }
-        }
-        if (array_key_exists($asset, self::$assetManifest)) {
-            $assetSuffix = self::$assetManifest[$asset];
-        } else {
-            $assetSuffix = $asset;
-        }
-        return $distPath . '/' . $assetSuffix;
+        return self::get('path', $asset);
     }
 
     public static function register($options)
@@ -60,6 +31,35 @@ class Asset
     public static function enqueue($options)
     {
         return self::add('enqueue', $options);
+    }
+
+    private static function get($returnType, $asset)
+    {
+        $distPath = get_template_directory() . '/dist';
+
+        if (!isset(self::$assetManifest)) {
+            $manifestPath = $distPath . '/rev-manifest.json';
+            if (is_file($manifestPath)) {
+                self::$assetManifest = json_decode(file_get_contents($manifestPath), true);
+            } else {
+                self::$assetManifest = [];
+            }
+        }
+
+        if (array_key_exists($asset, self::$assetManifest)) {
+            $assetSuffix = self::$assetManifest[$asset];
+        } else {
+            $assetSuffix = $asset;
+        }
+
+        if ('path' == $returnType) {
+            return $distPath . '/' . $assetSuffix;
+        } else if ('url' == $returnType) {
+            $distUrl = get_template_directory_uri() . '/dist';
+            return $distUrl . '/' . $assetSuffix;
+        }
+
+        return false;
     }
 
     private static function add($funcType, $options)
