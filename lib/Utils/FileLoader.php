@@ -27,21 +27,24 @@ class FileLoader
         return $output;
     }
 
-    // TODO fix this, this makes no sense (require only works for php files...?)
-    // recursively load all files with a specified extension
-    // optionally able to specify the files in an array to load in a certain order
-    public static function loadFilesWithExtension($fileExtension, $dir = '', $files = [])
+    /**
+     * Recursively require all files in a specific directory.
+     *
+     * Optionally able to specify the files in an array to load in a certain order.
+     *
+     * @param string $dir Directory to search through. Trailing slashes will be stripped.
+     * @param array $files Optional array of files to include. If this is set, only the files specified will be loaded.
+     **/
+    public static function loadPhpFiles($dir = '', $files = [])
     {
-
         if (count($files) === 0) {
             $dir = get_template_directory() . '/' . $dir;
 
-            self::iterateDir($dir, function ($file) use ($fileExtension) {
-
+            self::iterateDir($dir, function ($file) {
                 if ($file->isDir()) {
                     $dirPath = str_replace(get_template_directory(), '', $file->getPathname());
-                    self::loadFilesWithExtension($fileExtension, $dirPath, []);
-                } elseif ($file->isFile() && $file->getExtension() === $fileExtension) {
+                    self::loadPhpFiles($dirPath);
+                } elseif ($file->isFile() && $file->getExtension() === 'php') {
                     $filePath = $file->getPathname();
                     require_once $filePath;
                 }
@@ -58,11 +61,5 @@ class FileLoader
                 }
             });
         }
-    }
-
-    public static function loadPhpFiles($dir = '', $files = [])
-    {
-        $fileExtension = 'php';
-        self::loadFilesWithExtension('php', $dir, $files);
     }
 }
