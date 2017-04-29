@@ -2,22 +2,24 @@
 
 namespace Flynt\Utils;
 
-use RecursiveDirectoryIterator;
+use DirectoryIterator;
 
 class FileLoader
 {
     public static function iterateDir($dir, callable $callback)
     {
-
         $output = [];
 
         if (!is_dir($dir)) {
             return $output;
         }
 
-        $directoryIterator = new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS);
+        $directoryIterator = new DirectoryIterator($dir);
 
-        foreach ($directoryIterator as $name => $file) {
+        foreach ($directoryIterator as $file) {
+            if ($file->isDot()) {
+                continue;
+            }
             $callbackResult = call_user_func($callback, $file);
             array_push($output, $callbackResult);
         }
