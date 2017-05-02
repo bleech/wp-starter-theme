@@ -53,10 +53,11 @@ class StringHelpers
 
     public static function endsWith($search, $subject)
     {
-        $length = strlen($search);
-        if ($length == 0) {
-            return true;
+        $searchLength = strlen($search);
+        $subjectLength = strlen($subject);
+        if ($searchLength > $subjectLength) {
+            return false;
         }
-        return substr($subject, -$length) === $search;
+        return substr_compare($subject, $search, $subjectLength - $searchLength, $searchLength) === 0;
     }
 }
