@@ -87,12 +87,23 @@ class OptionPages
     // PUBLIC API
     // ============
 
-    // usage: OptionPages::getOptions('globalOptions', 'customPostType', 'myCustomPostTypeName');
-    // usage: OptionPages::getOptions('globalOptions', 'feature', 'myFeatureName');
-    // usage: OptionPages::getOptions('translatableOptions', 'component', 'myComponentName');
-    // all params expected to be camelCase
+    /**
+     * Get all options for a sub page.
+     *
+     * Returns all options of a sub page in an array.
+     * Parameters are expected to be camelCase. The first character of all parameters is converted to lower case.
+     *
+     * @param string $optionType Type of option page. Either globalOptions or translatableOptions.
+     * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
+     * @param string $subPageName Name of the sub page.
+     * @return array Array of options. Empty array if subpage doesn't exist or no options were found.
+     **/
     public static function getOptions($optionType, $optionCategory, $subPageName)
     {
+        $optionType = lcfirst($optionType);
+        $optionCategory = lcfirst($optionCategory);
+        $subPageName = lcfirst($subPageName);
+
         if (!isset(self::$optionTypes[$optionType])) {
             return [];
         }
@@ -113,13 +124,22 @@ class OptionPages
         }, []);
     }
 
-    // usage: OptionPages::getOption('globalOptions', 'customPostType', 'myCustomPostTypeName', 'myFieldName');
-    // usage: OptionPages::getOption('globalOptions', 'feature', 'myFeatureName', 'myFieldName');
-    // usage: OptionPages::getOption('translatableOptions', 'component', 'myComponentName', 'myFieldName');
-    // all params expected to be camelCase
+    /**
+     * Get single option from a sub page.
+     *
+     * Returns a single option of a sub page.
+     * Parameters are expected to be camelCase. The first character of all parameters is converted to lower case.
+     *
+     * @param string $optionType Type of option page. Either globalOptions or translatableOptions.
+     * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
+     * @param string $subPageName Name of the sub page.
+     * @param string $fieldName Name of the field to get.
+     * @return mixed The value of the option. False if subpage doesn't exist or no option was found.
+     **/
     public static function getOption($optionType, $optionCategory, $subPageName, $fieldName)
     {
         $options = self::getOptions($optionType, $optionCategory, $subPageName);
+        $fieldName = lcfirst($fieldName);
         return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
     }
 
