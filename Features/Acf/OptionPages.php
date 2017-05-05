@@ -88,32 +88,34 @@ class OptionPages
     // ============
 
     /**
-     * Get all options for a sub page.
+     * Get option(s) from a sub page.
      *
-     * Returns all options of a sub page in an array.
-     * Parameters are expected to be camelCase. The first character of all parameters is converted to lower case.
+     * Returns an option of a sub page. If no field name is provided it will get all option of that sub page.
+     * Parameters are expected to be camelCase.
      *
      * @param string $optionType Type of option page. Either globalOptions or translatableOptions.
      * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
      * @param string $subPageName Name of the sub page.
-     * @return array Array of options. Empty array if subpage doesn't exist or no options were found.
+     * @param string $fieldName (optional) Name of the field to get.
+     * @return mixed The value of the option or array of options. False if subpage doesn't exist or no option was found.
      **/
-    public static function getOptions($optionType, $optionCategory, $subPageName)
+    public static function get($optionType, $optionCategory, $subPageName, $fieldName = null)
     {
         $optionType = lcfirst($optionType);
-        $optionCategory = lcfirst($optionCategory);
-        $subPageName = lcfirst($subPageName);
 
         if (!isset(self::$optionTypes[$optionType])) {
-            return [];
+            return false;
         }
 
-        $prefix = implode('', [$optionType, ucfirst($optionCategory), ucfirst($subPageName), '_']);
+        $optionCategory = ucfirst($optionCategory);
+        $subPageName = ucfirst($subPageName);
+
+        $prefix = implode('', [$optionType, $optionCategory, $subPageName, '_']);
         $options = self::getOptionFields(self::$optionTypes[$optionType]['translatable']);
 
         // find and replace relevant keys, then return an array of all options for this Sub-Page
         $optionKeys = is_array($options) ? array_keys($options) : [];
-        return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
+        $options = array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
             $count = 0;
             $option = $options[$key];
             $key = str_replace($prefix, '', $key, $count);
@@ -122,25 +124,12 @@ class OptionPages
             }
             return $carry;
         }, []);
-    }
 
-    /**
-     * Get single option from a sub page.
-     *
-     * Returns a single option of a sub page.
-     * Parameters are expected to be camelCase. The first character of all parameters is converted to lower case.
-     *
-     * @param string $optionType Type of option page. Either globalOptions or translatableOptions.
-     * @param string $optionCategory Category of option page. One of these three values: component, feature, customPostType.
-     * @param string $subPageName Name of the sub page.
-     * @param string $fieldName Name of the field to get.
-     * @return mixed The value of the option. False if subpage doesn't exist or no option was found.
-     **/
-    public static function getOption($optionType, $optionCategory, $subPageName, $fieldName)
-    {
-        $options = self::getOptions($optionType, $optionCategory, $subPageName);
-        $fieldName = lcfirst($fieldName);
-        return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
+        if (isset($fieldName)) {
+            $fieldName = lcfirst($fieldName);
+            return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
+        }
+        return $options;
     }
 
     // ============
