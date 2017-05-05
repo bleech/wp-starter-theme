@@ -189,19 +189,8 @@ class OptionPages
         $filePath = $customPostType['dir'] . '/fields.json';
 
         if (is_file($filePath)) {
-            // TODO refactor
-            // $cptName = ucfirst($cptDir->getFilename());
-            // if (isset($cptConfig['label'])) {
-            //   $label = $cptConfig['label'];
-            // }
-            // if (isset($cptConfig['labels'])) {
-            //   if (isset($cptConfig['labels']['menu_name'])) {
-            //     $label = $cptConfig['labels']['menu_name'];
-            //   } else if (isset($cptConfig['labels']['singular_name'])) {
-            //     $label = $cptConfig['labels']['singular_name'];
-            //   }
-            // }
-            self::createSubPageFromConfig($filePath, 'customPostType', ucfirst($name));
+            $name = StringHelpers::kebapCaseToCamelCase($name);
+            self::createSubPageFromConfig($filePath, 'customPostType', $name);
         }
     }
 
