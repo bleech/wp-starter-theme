@@ -2,22 +2,11 @@
 
 namespace Flynt\Features\Jquery;
 
-/**
- * registerJquery
- *
- * Load jQuery from jQuery's CDN
- *
- * TODO add local fallback
- * TODO add cdn again just removed it because internet so slow
- */
+use Flynt\Utils\Asset;
+
 add_action('wp_enqueue_scripts', function () {
     $jqueryVersion = wp_scripts()->registered['jquery']->ver;
     wp_deregister_script('jquery');
-    wp_register_script(
-        'jquery',
-        '//code.jquery.com/jquery-' . $jqueryVersion . '.min.js',
-        [],
-        null,
-        true
-    );
-}, 100);
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/' . $jqueryVersion . '/jquery.min.js', false, $jqueryVersion, true);
+    wp_add_inline_script('jquery', 'window.jQuery||document.write("<script src=\"' . esc_url(Asset::requireUrl('vendor/jquery.min.js')) . '\"><\/script>")');
+});
