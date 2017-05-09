@@ -28,7 +28,8 @@ before_script:
   - yarn
 
 install:
-  - composer global require --dev phpunit/phpunit
+  - composer require --dev phpunit/phpunit
+  - export PATH="$HOME/vendor/bin:$PATH"
   - nvm install 6
   - nvm use 6
   - npm i -g yarn gulp
