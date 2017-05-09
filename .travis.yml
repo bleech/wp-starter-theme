@@ -28,6 +28,7 @@ before_script:
   - yarn
 
 install:
+  - composer global require --dev phpunit/phpunit
   - nvm install 6
   - nvm use 6
   - npm i -g yarn gulp
