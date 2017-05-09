@@ -25,11 +25,11 @@ matrix:
     - php: nightly
 
 before_script:
-  - nvm use 6
-  - npm i -g gulp
+  - yarn
 
 install:
-  - yarn
+  - nvm use 6
+  - npm i -g yarn gulp
 
 script:
   - gulp lint
