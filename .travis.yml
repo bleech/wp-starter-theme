@@ -29,7 +29,7 @@ before_script:
 
 install:
   - composer require --dev phpunit/phpunit
-  - export PATH="$HOME/vendor/bin:$PATH"
+  - export PATH="$PWD/vendor/bin:$PATH"
   - nvm install 6
   - nvm use 6
   - npm i -g yarn gulp
