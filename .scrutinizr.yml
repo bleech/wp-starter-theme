@@ -31,3 +31,4 @@ checks:
   php:
     custom_coding_standard:
       ruleset_path: phpcs.ruleset.xml
+  javascript: true
