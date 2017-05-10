@@ -2,7 +2,7 @@
 
 filter:
     paths: [./*]
-    excluded_paths: [./node_modules/*, ./bower_components/*, ./dist]
+    excluded_paths: [./node_modules/*, ./bower_components/*]
 
 # before_commands:
 #   - 'composer self-update'
@@ -13,10 +13,11 @@ tools:
   php_code_sniffer:
     enabled: true
     config:
-      standard: 'PSR2'
+      ruleset: ./phpcs.ruleset.xml
+      standard: custom
     filter:
       paths: [./*]
-      excluded_paths: [./node_modules/*, ./bower_components/*, ./dist]
+      excluded_paths: [./node_modules/*, ./bower_components/*]
   php_mess_detector:
     enabled: true
     config:
