@@ -39,7 +39,8 @@ if (class_exists('acf')) {
             add_action('admin_enqueue_scripts', NS . 'enqueueComponentScripts');
             // add image to the flexible content component name
             add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, $layout, $i) {
-                $componentPath = "Components/" . ucfirst($layout['name']) . "/";
+                $componentName = ucfirst($layout['name']);
+                $componentPath = "Components/{$componentName}/";
                 $componentPreviewDesktopPath = Asset::requirePath($componentPath . 'preview-desktop.jpg') ;
                 $componentPreviewDesktopUrl = Asset::requireUrl($componentPath . 'preview-desktop.jpg');
                 if (is_file($componentPreviewDesktopPath)) {
