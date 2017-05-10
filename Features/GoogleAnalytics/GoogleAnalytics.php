@@ -1,6 +1,7 @@
 <?php
 namespace Flynt\Features\GoogleAnalytics;
 
+use Flynt\Features\AdminNotices\AdminNoticeManager;
 use Timber\Timber;
 
 class GoogleAnalytics
@@ -24,8 +25,16 @@ class GoogleAnalytics
 
         if ($this->gaId && $this->isValidId($this->gaId)) {
             add_action('wp_footer', [$this, 'addScript'], 20, 1);
-        } else if ($this->gaId != 1 && !isset($_POST['acf'])) {
-            trigger_error("Invalid Google Analytics Id: {$this->gaId}", E_USER_WARNING);
+        } else if ($this->gaId != '' && !isset($_POST['acf'])) {
+            $manager = AdminNoticeManager::getInstance();
+            $message = ["Invalid Google Analytics Id: {$this->gaId}"];
+            $options = [
+                'type' => 'error',
+                'title' => 'Google Analytics Error',
+                'dismissible' => true,
+                'filenames' => 'functions.php'
+            ];
+            $manager->addNotice($message, $options);
         }
     }
 
