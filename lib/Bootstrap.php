@@ -51,7 +51,8 @@ class Bootstrap
         return $acfActive && $flyntCoreActive;
     }
 
-    protected static function notifyRequiredPluginIsMissing($pluginName) {
+    protected static function notifyRequiredPluginIsMissing($pluginName)
+    {
         add_action('admin_notices', function () {
             echo "<div class=\"error\"><p>${pluginName} Plugin not activated. Make sure you activate the plugin on the <a href=\""
                 . esc_url(admin_url('plugins.php')) . "\">plugin page</a>.</p></div>";
