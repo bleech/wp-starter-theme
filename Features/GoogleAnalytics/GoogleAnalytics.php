@@ -38,7 +38,6 @@ class GoogleAnalytics
             || is_array($this->skippedIps) && in_array($_SERVER['REMOTE_ADDR'], $this->skippedIps) // current ip should be skipped
         );
         Timber::render('script.twig', [
-            'user' => $user,
             'gaId' => $this->gaId,
             'trackingEnabled' => $trackingEnabled,
             'anonymizeIp' => $this->anonymizeIp
