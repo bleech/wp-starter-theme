@@ -44,9 +44,12 @@ class Bootstrap
                 if ('' != $newTemplate) {
                     return $newTemplate;
                 } else {
-                    return 'One or more required Plugins are not active! Please <a href="'
+                    trigger_error(
+                        'One or more required plugins are not activated! Please <a href="'
                         . esc_url(admin_url('plugins.php'))
-                        . '">activate all required plugins</a> and reload the page.';
+                        . '">activate or install the required plugin(s)</a> and reload the page.',
+                        E_USER_WARNING
+                    );
                 }
             });
         }
