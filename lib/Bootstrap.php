@@ -19,7 +19,7 @@ class Bootstrap
         });
     }
 
-    public static function checkPlugin()
+    public static function checkRequiredPlugins()
     {
         $flyntCoreActive = class_exists('\\Flynt\\Render');
         $acfActive = class_exists('acf');
