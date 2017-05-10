@@ -40,9 +40,9 @@ if (class_exists('acf')) {
             // add image to the flexible content component name
             add_filter('acf/fields/flexible_content/layout_title', function ($title, $field, $layout, $i) {
                 $componentName = ucfirst($layout['name']);
-                $componentPath = "Components/{$componentName}/";
-                $componentPreviewDesktopPath = Asset::requirePath($componentPath . 'preview-desktop.jpg') ;
-                $componentPreviewDesktopUrl = Asset::requireUrl($componentPath . 'preview-desktop.jpg');
+                $componentPath = "Components/{$componentName}";
+                $componentPreviewDesktopPath = Asset::requirePath("{$componentPath}/preview-desktop.jpg") ;
+                $componentPreviewDesktopUrl = Asset::requireUrl("{$componentPath}/preview-desktop.jpg");
                 if (is_file($componentPreviewDesktopPath)) {
                     $newTitle = '<span class="flyntComponentPreview">';
                     $newTitle .= '<img class="flyntComponentPreview-imageElement" src="' . $componentPreviewDesktopUrl . '" height="36px">';
