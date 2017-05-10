@@ -25,17 +25,11 @@ class Bootstrap
         $acfActive = class_exists('acf');
 
         if (!$flyntCoreActive) {
-            add_action('admin_notices', function () {
-                echo '<div class="error"><p>Flynt Core Plugin not activated. Make sure you activate the plugin on the <a href="'
-                    . esc_url(admin_url('plugins.php')) . '">plugin page</a>.</p></div>';
-            });
+            self::notifyRequiredPluginIsMissing('Flynt Core');
         }
 
         if (!$acfActive) {
-            add_action('admin_notices', function () {
-                echo '<div class="error"><p>ACF Plugin not activated. Make sure you activate the plugin on the <a href="'
-                    . esc_url(admin_url('plugins.php')) . '">plugin page</a>.</p></div>';
-            });
+            self::notifyRequiredPluginIsMissing('ACF');
         }
 
         if (!$acfActive || !$flyntCoreActive) {
@@ -55,5 +49,12 @@ class Bootstrap
         }
 
         return $acfActive && $flyntCoreActive;
+    }
+
+    protected static function notifyRequiredPluginIsMissing($pluginName) {
+        add_action('admin_notices', function () {
+            echo "<div class=\"error\"><p>${pluginName} Plugin not activated. Make sure you activate the plugin on the <a href=\""
+                . esc_url(admin_url('plugins.php')) . "\">plugin page</a>.</p></div>";
+        });
     }
 }
