@@ -53,7 +53,7 @@ class Bootstrap
 
     protected static function notifyRequiredPluginIsMissing($pluginName)
     {
-        add_action('admin_notices', function () {
+        add_action('admin_notices', function () use ($pluginName) {
             echo "<div class=\"error\"><p>${pluginName} Plugin not activated. Make sure you activate the plugin on the <a href=\""
                 . esc_url(admin_url('plugins.php')) . "\">plugin page</a>.</p></div>";
         });
