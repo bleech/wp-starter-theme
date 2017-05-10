@@ -28,7 +28,7 @@ before_script:
   - yarn
 
 install:
-  - composer global require --dev phpunit/phpunit
+  - composer global require "squizlabs/php_codesniffer=*"
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - nvm install 6
   - nvm use 6
