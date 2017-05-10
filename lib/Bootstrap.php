@@ -21,27 +21,36 @@ class Bootstrap
 
     public static function checkPlugin()
     {
-        $pluginActive = class_exists('\\Flynt\\Render');
+        $flyntCoreActive = class_exists('\\Flynt\\Render');
+        $acfActive = class_exists('acf');
 
-        if (!$pluginActive) {
+        if (!$flyntCoreActive) {
             add_action('admin_notices', function () {
-                echo '<div class="error"><p>Flynt Core Plugin not activated. Make sure you activate the plugin in <a href="'
-                    . esc_url(admin_url('plugins.php#flynt')) . '">'
-                    . esc_url(admin_url('plugins.php')) . '</a></p></div>';
+                echo '<div class="error"><p>Flynt Core Plugin not activated. Make sure you activate the plugin on the <a href="'
+                    . esc_url(admin_url('plugins.php')) . '">plugin page</a>.</p></div>';
             });
+        }
 
+        if (!$acfActive) {
+            add_action('admin_notices', function () {
+                echo '<div class="error"><p>ACF Plugin not activated. Make sure you activate the plugin on the <a href="'
+                    . esc_url(admin_url('plugins.php')) . '">plugin page</a>.</p></div>';
+            });
+        }
+
+        if (!$acfActive || !$flyntCoreActive) {
             add_filter('template_include', function () {
-                $newTemplate = locate_template(['plugin-inactive.php']);
+                $newTemplate = locate_template('plugin-inactive.php');
                 if ('' != $newTemplate) {
                     return $newTemplate;
                 } else {
-                    return 'Flynt Core Plugin not activated! Please <a href="'
+                    return 'One or more required Plugins are not active! Please <a href="'
                         . esc_url(admin_url('plugins.php'))
-                        . '">activate the plugin</a> and reload the page.';
+                        . '">activate all required plugins</a> and reload the page.';
                 }
             });
         }
 
-        return $pluginActive;
+        return $acfActive && $flyntCoreActive;
     }
 }

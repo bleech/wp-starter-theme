@@ -7,7 +7,7 @@
   </head>
   <body>
     One or more required Plugins are not activated! Please
-    <a href="<?= admin_url('plugins.php') ?>">activate or install the required plugin(s)</a>
+    <a href="<?php echo admin_url('plugins.php') ?>">activate or install the required plugin(s)</a>
     and reload the page.
     <?php wp_footer(); ?>
   </body>
