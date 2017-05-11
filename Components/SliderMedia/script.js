@@ -29,14 +29,14 @@ class SliderMedia extends window.HTMLDivElement {
   connectedCallback () {
     this.setupSlider()
     this.$oembedVideo.on('load', this.onIframeLoad)
-    this.$posterImage.on('click', this.setIframeSrc)
+    this.$.on('click', this.$posterImage.selector, this.setIframeSrc)
   }
 
   setupSlider = () => {
     if (this.$slides.length > 1) {
-      this.$mediaSlides.on('init', this.slickInit)
+      this.$.on('init', this.$mediaSlides.selector, this.slickInit)
       this.$mediaSlides.slick(slickConfiguration)
-      this.$mediaSlides.on('beforeChange', this.unsetIframeSrc)
+      this.$.on('beforeChange', this.$mediaSlides.selector, this.unsetIframeSrc)
     }
   }
 
