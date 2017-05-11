@@ -2,6 +2,7 @@
   "Default": [
     [
       "formatselect",
+      "styleselect",
       "bold",
       "italic",
       "underline",

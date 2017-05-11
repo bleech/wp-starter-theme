@@ -9,7 +9,7 @@ use Flynt\Utils\Feature;
 // First Bar
 add_filter('mce_buttons', function ($buttons) {
     $toolbarsFromFile = getToolbarsFromJson();
-    return $toolbarsFromFile['Default'];
+    return $toolbarsFromFile['Default'][0];
 });
 
 // Second Bar
@@ -18,11 +18,28 @@ add_filter('mce_buttons_2', function ($buttons) {
 });
 
 add_filter('tiny_mce_before_init', function ($init) {
-    // Add block format elements you want to show in dropdown
-    $init['block_formats'] = 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
+    $options = Feature::getOptions('flynt-tiny-mce');
+
+    if (isset($options[0]) && isset($options[0]['blockformatsConfigPath'])) {
+        $configPath = $options[0]['blockformatsConfigPath'];
+    } else {
+        $configPath = 'config/blockformats.json';
+    }
+
+    $filePath = get_template_directory() . '/Features/TinyMce/' . $configPath;
+    if (file_exists($filePath)) {
+        $blockstyles = json_decode(file_get_contents($filePath), true);
+        $blockstylesQueries = [];
+        foreach ($blockstyles as $label => $tag) {
+            $blockstylesQueries[] = $label . '=' . $tag;
+        }
+        $init['block_formats'] = implode(';', $blockstylesQueries);
+    } else {
+        $init['block_formats'] = 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
+    }
     
     // Load Styleformat Dropdown and parse it into TinyMCE
-    $options = Feature::getOptions('flynt-tiny-mce');
+    
     if (isset($options[0]) && isset($options[0]['styleformatsConfigPath'])) {
         $configPath = $options[0]['styleformatsConfigPath'];
     } else {
@@ -31,8 +48,9 @@ add_filter('tiny_mce_before_init', function ($init) {
 
     $filePath = get_template_directory() . '/Features/TinyMce/' . $configPath;
     if (file_exists($filePath)) {
-        $loadedStyle = file_get_contents($filePath);
-        $init['style_formats'] = $loadedStyle;
+        // Get contents as JSON string first and convert it to array for sending it to style_formats as true js array
+        $loadedStyle = json_decode(file_get_contents($filePath), true);
+        $init['style_formats'] = json_encode($loadedStyle);
     }
     return $init;
 });

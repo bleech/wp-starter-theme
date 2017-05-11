@@ -150,11 +150,11 @@ Call the `add_editor_style` function and pass as a parameter your stylesheet fil
 
 ### Adding custom toolbars
 
-Open `Features/TinyMce/config/toolbars.json` and add your toolbar configuration to the toolbar Array. This will automatically be loaded. You can call the toolbar inside your ACF configuration in lowercase.
+Open `Features/TinyMce/config/toolbars.json` and add your toolbar configuration to the toolbar array. This will automatically be loaded. You can call the toolbar inside your ACF configuration in lowercase.
 
 **Example**:<br>
 `"toolbar": "customtoolbar"`
 
 ### Adding new Style Formats via JSON
 
-Open `Features/TinyMce/config/styleformats.json` and add your configuration to the styleformats Array. This will automatically be loaded.
+Open `Features/TinyMce/config/styleformats.json` and add your configuration to the styleformats array. This will automatically be loaded.
