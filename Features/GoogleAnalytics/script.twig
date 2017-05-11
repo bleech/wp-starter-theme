@@ -9,7 +9,7 @@
       console.log('GoogleAnalytics: ' + [].slice.call(arguments));
     }
   {% endif %}
-  var gaId = {{ gaId|json_encode|raw }}
+  var gaId = {{ gaId|json_encode|raw }};
   ga('create',gaId,'auto');ga('send','pageview');
   {% if anonymizeIp == 1 %}
     ga('set', 'anonymizeIp', true);
