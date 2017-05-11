@@ -15,8 +15,7 @@
         "choices": {
           "image": "Image",
           "oembedVideo": "Oembed Video"
-        },
-        "default_value": ""
+        }
       },
       {
         "name": "image",
@@ -88,14 +87,7 @@
         "choices": {
           "mediaLeft": "Left",
           "mediaRight": "Right"
-        },
-        "default_value": ""
-      },
-      {
-        "name": "tabEnd",
-        "label": "",
-        "type": "tab",
-        "endpoint": 1
+        }
       }
     ]
   }

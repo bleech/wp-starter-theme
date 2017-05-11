@@ -3,7 +3,6 @@
 ## Global Default Poster Image
 
 `fields.json`
-
 ```json
 {
   "globalOptions": [
@@ -19,12 +18,11 @@
 ```
 
 `functions.php`
-
 ```php
 <?php
 add_filter('Flynt/addComponentData?name=BlockMediaText', function ($data) {
-    if (empty($data['mediaType'] == 'mediaVideo' && $data['posterImage'])  ) {
-        $data['posterImage'] = get_field('defaultPosterImage', 'options');
+    if ($data['mediaType'] === 'mediaVideo' && empty($data['posterImage'])) {
+        $data['posterImage'] = $data['defaultPosterImage'];
     }
 });
 ```

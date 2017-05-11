@@ -7,31 +7,21 @@ class BlockMediaText extends window.HTMLDivElement {
   }
 
   resolveElements () {
-    this.resolveOembedVideoElements()
-  }
-
-  connectedCallback () {
-    this.connectedOembedVideoCallback()
-  }
-
-  resolveOembedVideoElements () {
     this.$posterImage = $('.oembedVideo-posterImage', this)
     this.$video = $('.oembedVideo-video', this)
     this.$iframe = $('iframe', this)
   }
 
-  connectedOembedVideoCallback () {
-    this.$iframe.on('load', this.onIframeLoad.bind(this))
-    this.$posterImage.on('click', (e) => {
-      this.setIframeSrc()
-    })
+  connectedCallback () {
+    this.$iframe.on('load', this.onIframeLoad)
+    this.$.on('click', this.$posterImage.selector, this.setIframeSrc)
   }
 
   setIframeSrc = () => {
     this.$iframe.attr('src', this.$iframe.data('src'))
   }
 
-  onIframeLoad () {
+  onIframeLoad = () => {
     this.$video.addClass('oembedVideo-video-isVisible')
     this.$posterImage.addClass('oembedVideo-posterImage-isHidden')
   }
