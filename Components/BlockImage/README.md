@@ -2,7 +2,7 @@ Title: Block Image
 
 ----
 
-Category: Image
+Category: Block
 
 ----
 
