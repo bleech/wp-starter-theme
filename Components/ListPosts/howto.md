@@ -116,6 +116,13 @@
 </div>
 ```
 
+`style.styl`
+```stylus
+.flyntComponent[is="flynt-list-posts"]
+  .listPosts
+    @import 'partials/AllPostsCta/_style'
+```
+
 ## Automatic Post Teaser list by selecting a post type
 add partial `Partials/AllPostsCta/*.*`
 
