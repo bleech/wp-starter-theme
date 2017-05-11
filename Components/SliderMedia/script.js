@@ -28,15 +28,15 @@ class SliderMedia extends window.HTMLDivElement {
 
   connectedCallback () {
     this.setupSlider()
-    this.$oembedVideo.on('load', this.onIframeLoad.bind(this))
-    this.$posterImage.on('click', this.setIframeSrc.bind(this))
+    this.$oembedVideo.on('load', this.onIframeLoad)
+    this.$posterImage.on('click', this.setIframeSrc)
   }
 
   setupSlider = () => {
     if (this.$slides.length > 1) {
-      this.$mediaSlides.on('init', this.slickInit.bind(this))
+      this.$mediaSlides.on('init', this.slickInit)
       this.$mediaSlides.slick(slickConfiguration)
-      this.$mediaSlides.on('beforeChange', this.unsetIframeSrc.bind(this))
+      this.$mediaSlides.on('beforeChange', this.unsetIframeSrc)
     }
   }
 
@@ -44,23 +44,23 @@ class SliderMedia extends window.HTMLDivElement {
     this.$sliderMedia.removeClass('sliderMedia-isHidden')
   }
 
-  unsetIframeSrc (event, slick, currentSlide, nextSlide) {
-    let $currentSlide = $(slick.$slides[currentSlide])
+  unsetIframeSrc = (e, slick, currentSlide, nextSlide) => {
+    const $currentSlide = $(slick.$slides[currentSlide])
     $currentSlide.find('iframe').attr('src', '')
   }
 
   setIframeSrc = (e) => {
-    let $oembedVideo = $(e.target).closest('.oembedVideo')
-    let $iframe = $oembedVideo.find('iframe')
+    const $oembedVideo = $(e.target).closest('.oembedVideo')
+    const $iframe = $oembedVideo.find('iframe')
     const iframeSrc = $iframe.data('src')
     $iframe.attr('src', iframeSrc)
   }
 
   onIframeLoad = (e) => {
-    let $iframe = $(e.target)
-    let $oembedVideo = $iframe.closest('.oembedVideo')
-    let $video = $oembedVideo.find('.oembedVideo-video')
-    let $posterImage = $oembedVideo.find('.oembedVideo-posterImageWrapper')
+    const $iframe = $(e.target)
+    const $oembedVideo = $iframe.closest('.oembedVideo')
+    const $video = $oembedVideo.find('.oembedVideo-video')
+    const $posterImage = $oembedVideo.find('.oembedVideo-posterImageWrapper')
 
     if ($iframe.attr('src')) {
       // show video
