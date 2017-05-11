@@ -2,7 +2,7 @@ Title: List Posts
 
 ----
 
-Category: list
+Category: List
 
 ----
 

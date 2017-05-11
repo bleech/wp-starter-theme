@@ -15,6 +15,13 @@
       "required": 1
     },
     {
+      "name": "readMoreLabel",
+      "label": "Read More Label",
+      "type": "text",
+      "default_value": "Read More",
+      "required": 1
+    },
+    {
       "name": "noPostsFoundText",
       "label": "No Posts Found Text",
       "type": "text",

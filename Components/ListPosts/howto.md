@@ -238,24 +238,24 @@ add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData
 }, 10, 2);
 
 function addDataToAllPosts($posts) {
-  if (is_array($posts)) {
-    $posts = array_map(function ($post) {
-      $post = addExcerpt($post);
-      return $post;
-    }, $posts);
-  }
-  return $posts;
+    if (is_array($posts)) {
+        $posts = array_map(function ($post) {
+            $post = addExcerpt($post);
+            return $post;
+        }, $posts);
+    }
+    return $posts;
 }
 
 function addExcerpt($post) {
-  if (is_object($post)) {
-    $timberPost = TimberHelper::getTimberPostById($post->id);
-    $post->excerpt = TextHelper::trim_characters(
-      TimberHelper::getExcerpt($timberPost->id, 50, false, false),
-      50
-    );
-  }
-  return $post;
+    if (is_object($post)) {
+        $timberPost = TimberHelper::getTimberPostById($post->id);
+        $post->excerpt = TextHelper::trim_characters(
+            TimberHelper::getExcerpt($timberPost->id, 50, false, false),
+            50
+        );
+    }
+    return $post;
 }
 ```
 

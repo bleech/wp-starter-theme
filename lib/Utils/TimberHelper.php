@@ -6,11 +6,11 @@ use Timber\Post;
 
 class TimberHelper
 {
-    public static function getTimberPostById($postId, $moreLinkText = null, $stripteaser = false)
+    public static function getTimberPostById($postId, $moreLinkText = null, $stripTeaser = false)
     {
         global $post;
         $post = get_post($postId);
-        setup_postdata($post, $moreLinkText, $stripteaser);
+        setup_postdata($post, $moreLinkText, $stripTeaser);
         $timberPost = new Post($post);
         wp_reset_postdata($post);
         return $timberPost;

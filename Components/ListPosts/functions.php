@@ -9,7 +9,7 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData) {
-    $data['isArchive'] = is_home() || is_archive() ? true : false;
+    $data['isArchive'] = is_home() || is_archive();
 
     $data['pagination'] = (isset($parentData['pagination'])) ? $parentData['pagination'] : null;
     if (!isset($data['posts']) && isset($parentData['posts'])) {
