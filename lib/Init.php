@@ -55,8 +55,11 @@ function initTheme()
     add_theme_support('flynt-navigation');
     add_theme_support('flynt-remove-editor');
     add_theme_support('flynt-tiny-mce', [
-        'toolbarsConfigPath' => 'config/toolbars.json',
-        'styleformatsConfigPath' => 'config/styleformats.json'
+        'paths' => [
+            'toolbarsConfigPath' => 'config/toolbars.json',
+            'styleformatsConfigPath' => 'config/styleformats.json',
+            'blockformatsConfigPath' => 'config/blockformats.json'
+        ]
     ]);
 
     // add components previews
