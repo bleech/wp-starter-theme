@@ -5,7 +5,7 @@
       {{ posterImage.src | resize(800, 450) }} 800w,
       {{ posterImage.src | resize(1200, 675) }} 1200w,
       {{ posterImage.src | resize(1600, 900) }} 1600w"
-      src="{{ posterImage.src }}"
+      src="{{ posterImage.src | resize(1200, 675) }}"
       sizes="100vw"
       alt="{{ posterImage.alt }}" />
   </div>
