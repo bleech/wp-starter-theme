@@ -1,4 +1,27 @@
 {
+  "Default": [
+    [
+      "formatselect",
+      "bold",
+      "italic",
+      "underline",
+      "strikethrough",
+      "|",
+      "bullist",
+      "numlist",
+      "|",
+      "link",
+      "unlink",
+      "|",
+      "wp_more",
+      "pastetext",
+      "removeformat",
+      "|",
+      "undo",
+      "redo",
+      "fullscreen"
+    ]
+  ],
   "Full": [
     [
       "formatselect",
@@ -42,9 +65,9 @@
   ],
   "CustomToolbar": [
     [
-    "bold",
-    "link",
-    "unlink"
+      "bold",
+      "link",
+      "unlink"
     ]
   ]
 }
