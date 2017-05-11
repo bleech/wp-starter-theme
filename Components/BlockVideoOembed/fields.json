@@ -8,6 +8,8 @@
         "label": "Poster Image",
         "type": "image",
         "mime_types": "jpg,jpeg",
+        "min_width": 1200,
+        "min_height": 675,
         "instructions": "Recommended Size: Min-Width 1200px; Min-Height: 675px; Image-Format: JPG, Aspect Ratio 16/9.",
         "required": 1
       },

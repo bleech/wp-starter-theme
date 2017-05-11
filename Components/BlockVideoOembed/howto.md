@@ -21,8 +21,8 @@
 ```php
 <?php
 add_filter('Flynt/addComponentData?name=BlockVideoOembed', function ($data) {
-  if (empty($data['posterImage'])) {
-    $data['posterImage'] = get_field('defaultPosterImage', 'options');
-  }
+    if (empty($data['posterImage'])) {
+        $data['posterImage'] = $data['defaultPosterImage'];
+    }
 });
 ```
