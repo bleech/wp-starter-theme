@@ -66,7 +66,7 @@ class SliderMedia extends window.HTMLDivElement {
       // show video
       $video.addClass('oembedVideo-video-isVisible')
       $posterImage.addClass('oembedVideo-posterImageWrapper-isHidden')
-      if(this.$slideTitle.hasClass('slideTitle--overlayTitleTop') || this.$slideTitle.hasClass('slideTitle--overlayTitleBottom')) {
+      if (this.$slideTitle.hasClass('slideTitle--overlayTitleTop') || this.$slideTitle.hasClass('slideTitle--overlayTitleBottom')) {
         this.$slideTitle.addClass('slideTitle-isHidden')
       }
     } else {
