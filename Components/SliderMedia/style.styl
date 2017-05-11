@@ -1,4 +1,5 @@
-$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
+$gutterWidth = lookup('$global-layout-gutterWidth') || 1.5
+$containerPadding = lookup('$global-layout-containerPadding') || 15px
 $maxWidth = lookup('$global-layout-maxWidth') || 1140px
 // Note: When passing multiple values capsule them with paranthesis
 rupture.scale = $global-layout-scale is defined ? $global-layout-scale : 0 400px 800px 1200px
@@ -44,7 +45,7 @@ $playButtonColor = rgba(0, 0, 0, .5) // Color of the play bubble
     position: relative
 
     if $useContainer
-      center($maxWidth, $gutterWidth)
+      center($maxWidth, $containerPadding)
     else
       center($containerMaxWidth)
       padding-left: 0

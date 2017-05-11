@@ -1,6 +1,7 @@
 $rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
 $rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
-$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
+$gutterWidth = lookup('$global-layout-gutterWidth') || 1.5
+$containerPadding = lookup('$global-layout-containerPadding') || 15px
 $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
 
 @import 'Mixins/_playButton.styl'
@@ -12,7 +13,7 @@ $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
     box-sizing: border-box
 
   .blockMediaText
-    center($containerMaxWidth, $gutterWidth)
+    center($containerMaxWidth, $containerPadding)
 
     &-columnMedia,
     &-columnContentHtml

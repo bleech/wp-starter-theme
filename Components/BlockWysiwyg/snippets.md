@@ -41,10 +41,10 @@ $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
 $narrowWidth = lookup('$global-layout-narrowWidth') || 650px
 
 .wysiwyg
-  center($containerMaxWidth, $gutterWidth)
+  center($containerMaxWidth, $containerPadding)
 
   &-fullwidth
-    center($containerMaxWidth, $gutterWidth)
+    center($containerMaxWidth, $containerPadding)
 
   &-narrow
     center($narrowWidth, $gutterWidth)

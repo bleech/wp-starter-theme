@@ -1,7 +1,8 @@
 $rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
 $rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
 $containerMaxWidth = lookup('$global-layout-containerMaxWidth') || 1140px
-$gutterWidth = lookup('$global-layout-gutterWidth') || 15px
+$containerPadding = lookup('$global-layout-containerPadding') || 15px
+$gutterWidth = lookup('$global-layout-gutterWidth') || 1.5
 $maxWidth = $containerMaxWidth - (2 * $gutterWidth)
 
 // Frontend Preview Images
