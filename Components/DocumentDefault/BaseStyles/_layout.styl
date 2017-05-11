@@ -1,4 +1,9 @@
+$rupture.scale = lookup('$global-layout-scale') || (0 576px 768px 992px 1200px)
+$rupture.anti-overlap = lookup('$global-layout-overlap') || -1px
+
 [is='flynt-document-default']
   html,
   body
     height: 100%
+    margin: 0
+    padding: 0
