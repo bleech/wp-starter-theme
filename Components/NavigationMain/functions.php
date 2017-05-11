@@ -2,6 +2,7 @@
 
 namespace Flynt\Components\NavigationMain;
 
+use Flynt\Features\Components\Component;
 use Timber\Menu;
 
 add_action('wp_enqueue_scripts', function () {
