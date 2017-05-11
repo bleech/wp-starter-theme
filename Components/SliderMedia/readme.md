@@ -1,4 +1,4 @@
-Title: Slider Media
+Title: SliderMedia
 
 ----
 
