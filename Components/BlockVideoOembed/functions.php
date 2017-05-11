@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt\Components\BlockVideoOembed;
 
 use Flynt\Features\Components\Component;

@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt\Components\SliderMedia;
 
 use Flynt\Features\Components\Component;

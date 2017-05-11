@@ -1,4 +1,5 @@
 <?php
+
 namespace Flynt\Components\BlockMediaText;
 
 use Flynt\Features\Components\Component;
