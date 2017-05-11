@@ -92,14 +92,13 @@ Take `config/templates/default.json` as an example. This template contains the `
 }
 ```
 
-The `layout` area in `config/templates/default.json` is then output in `Components/DocumentDefault/index.twig`:
+The `layout` area is then rendered in the `Components/DocumentDefault/index.twig` template:
 
 ```twig
 <!DOCTYPE html>
 <html class="flyntComponent {{ body_class }}" lang="{{ site.language }}" dir="{{ dir }}" is="flynt-document-default">
   <head><!--...--></head>
   <body role="document">
-    <!-- Output the `layout` area as defined in `config/templates/default.json`. -->
     {{ area('layout') }}
     {{ wp_footer }}
   </body>
