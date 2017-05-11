@@ -63,9 +63,9 @@ For example, take `templates/page.php`:
 Flynt\echoHtmlFromConfigFile('default.json');
 ```
 
-The JSON template configuration files are found in `config/templates`. These configuration files define the [areas](#areas) and [components](#components) which are loaded into the template.
+The JSON template configuration files are found in `config/templates`. These configuration files define the [components](#components) and their [areas](#areas) which are loaded into the template.
 
-Take `config/templates/default.json` as an example. This template calls the `DocumentDefault` component and registers one area: `layout`. The `layout` area calls the `LayoutSinglePost` component, which in turn contains three nested [areas](#areas): `mainHeader`, `pageComponents`, and `mainFooter`. In addition, the `pageComponents` area calls the `ComponentLoaderFlexible` component.
+Take `config/templates/default.json` as an example. This template contains the `DocumentDefault` component, with one area within it: `layout`. The `layout` area contains the `LayoutSinglePost` component, which in turn has three nested [areas](#areas): `mainHeader`, `pageComponents`, and `mainFooter`. In addition, the `pageComponents` area contains the `ComponentLoaderFlexible` component.
 
 ```json
 {
@@ -92,7 +92,7 @@ Take `config/templates/default.json` as an example. This template calls the `Doc
 }
 ```
 
-To complete the picture, the `layout` area defined in the template is then output in `Components/DocumentDefault/index.twig`:
+The `layout` area in `config/templates/default.json` is then output in `Components/DocumentDefault/index.twig`:
 
 ```twig
 <!DOCTYPE html>
@@ -130,7 +130,7 @@ Since components are self-contained, areas provide a way to stack our building-b
 ### Features
 With WordPress, it is easy to create one large `functions.php` file, crammed full of all the custom logic your theme may need. This can get messy. In Flynt, we split each piece of functionality into smaller, self-contained **feature** bundles.
 
-In most cases, features add global hooks and filters that affect the project on a global level. With this in mind, each feature is built with drag and drop reusability in mind.
+In most cases, features add global hooks and filters that affect the project on a global level. With this in mind, each feature is built with reusability in mind.
 
 Flynt comes with a core set of ready to go features, each with its own readme. To learn more, look through the [Features](https://github.com/flyntwp/flynt-starter-theme/tree/master/Features) directory.
 
