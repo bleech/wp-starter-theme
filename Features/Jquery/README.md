@@ -1,3 +1,3 @@
 # jQuery (Flynt Feature)
 
-Remove the Wordpress default jQuery script and load it from Google's CDN with a local fallback.
+Loads jQuery from Google's CDN falling back to the default WordPress script.
