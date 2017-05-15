@@ -50,11 +50,15 @@ function initTheme()
     // clean up some things
     add_theme_support('flynt-clean-head');
     add_theme_support('flynt-clean-rss');
-    add_theme_support('flynt-jquery');
     add_theme_support('flynt-mime-types');
     add_theme_support('flynt-navigation');
     add_theme_support('flynt-remove-editor');
     add_theme_support('flynt-tiny-mce');
+
+    // load jQuery in footer by default (+ option to load from cdn with local fallback)
+    add_theme_support('flynt-jquery', [
+        'cdn' => true
+    ]);
 
     // add components previews
     add_theme_support('flynt-admin-component-preview');
