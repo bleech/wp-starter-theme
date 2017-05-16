@@ -5,6 +5,7 @@ namespace Flynt\Init;
 require_once __DIR__ . '/Utils/FileLoader.php';
 
 use Flynt;
+use Flynt\Utils\Asset;
 use Flynt\Utils\Feature;
 use Flynt\Utils\FileLoader;
 use Flynt\Utils\StringHelpers;
@@ -15,6 +16,9 @@ function initTheme()
 {
     // initialize plugin defaults
     Flynt\initDefaults();
+
+    // Set to true to load all assets from a CDN if there is one specified
+    Asset::loadFromCdn(false);
 
     // register all components in 'Components' folder
     add_theme_support('flynt-components', get_template_directory() . '/dist/Components/');
@@ -56,9 +60,7 @@ function initTheme()
     add_theme_support('flynt-tiny-mce');
 
     // load jQuery in footer by default (+ option to load from cdn with local fallback)
-    add_theme_support('flynt-jquery', [
-        'cdn' => true
-    ]);
+    add_theme_support('flynt-jquery');
 
     // add components previews
     add_theme_support('flynt-admin-component-preview');
