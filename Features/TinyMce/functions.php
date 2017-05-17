@@ -27,12 +27,12 @@ add_filter('mce_buttons_2', function ($buttons) {
 add_filter('tiny_mce_before_init', function ($init) {
     $config = getConfig();
     if ($config) {
-        if (isset($config['blockstyles'])) {
-            $init['block_formats'] = getBlockFormats($config['blockstyles']);
+        if (isset($config['blockformats'])) {
+            $init['block_formats'] = getBlockFormats($config['blockformats']);
         }
 
         if (isset($config['styleformats'])) {
-            // Get contents as JSON string first and convert it to array (in getConfig call) for sending it to style_formats as true js array
+            // Send it to style_formats as true js array
             $init['style_formats'] = json_encode($config['styleformats']);
         }
     }
@@ -68,15 +68,13 @@ function getConfig()
     }
 }
 
-// TODO: refactor this using php array functions
-function getBlockFormats($blockstyles)
+function getBlockFormats($blockFormats)
 {
-    if (!empty($blockstyles)) {
-        $blockstylesQueries = [];
-        foreach ($blockstyles as $label => $tag) {
-            $blockstylesQueries[] = $label . '=' . $tag;
-        }
-        return implode(';', $blockstylesQueries);
+    if (!empty($blockFormats)) {
+        $blockFormatStrings = array_map(function ($tag, $label) {
+            return "${label}=${tag}";
+        }, $blockFormats, array_keys($blockFormats));
+        return implode($blockFormatStrings, ';');
     }
     return '';
 }
