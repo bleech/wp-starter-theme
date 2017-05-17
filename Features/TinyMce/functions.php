@@ -9,8 +9,8 @@ use Flynt\Utils\Asset;
 
 // First Bar
 add_filter('mce_buttons', function ($buttons) {
-    $toolbarsFromFile = getToolbarsFromJson();
-    return $toolbarsFromFile['Default'][0];
+    $toolbars = getToolbars();
+    return $toolbars['default'][0];
 });
 
 // Second Bar
@@ -19,17 +19,16 @@ add_filter('mce_buttons_2', function ($buttons) {
 });
 
 add_filter('tiny_mce_before_init', function ($init) {
-    $options = Feature::getOptions('flynt-tiny-mce');
+    $init['block_formats'] = getBlockFormats();
+    $init['style_formats'] = getStyleFormats();
 
-    $init['block_formats'] = getBlockFormats($options);
-    $init['style_formats'] = getStyleFormats($options);
-    
     return $init;
 });
 
+// TODO: refactor this
 add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
     // Load Toolbars and parse them into TinyMCE
-    $toolbarsFromFile = getToolbarsFromJson();
+    $toolbarsFromFile = getToolbars();
     if ($toolbarsFromFile) {
         $toolbars = [];
         foreach ($toolbars as $name => $toolbar) {
@@ -41,16 +40,9 @@ add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
     return $toolbars;
 });
 
-function getToolbarsFromJson()
+function getConfig()
 {
-    $options = Feature::getOptions('flynt-tiny-mce');
-    if (isset($options[0]) && isset($options[0]['toolbarsConfigPath'])) {
-        $configPath = $options[0]['paths']['toolbarsConfigPath'];
-    } else {
-        $configPath = 'config/toolbars.json';
-    }
-
-    $filePath = Asset::requirePath('/Features/TinyMce/' . $configPath);
+    $filePath = Asset::requirePath('/Features/TinyMce/config.json');
     if (file_exists($filePath)) {
         return json_decode(file_get_contents($filePath), true);
     } else {
@@ -58,41 +50,37 @@ function getToolbarsFromJson()
     }
 }
 
-function getBlockFormats($options)
-{
-    if (isset($options[0]) && isset($options[0]['blockformatsConfigPath'])) {
-        $configPath = $options[0]['paths']['blockformatsConfigPath'];
-    } else {
-        $configPath = 'config/blockformats.json';
+function getToolbars() {
+    $config = getConfig();
+    if ($config && isset($config['toolbars'])) {
+        return $config['toolbars'];
     }
+    return [];
+}
 
-    $filePath = Asset::requirePath('/Features/TinyMce/' . $configPath);
-    if (file_exists($filePath)) {
-        $blockstyles = json_decode(file_get_contents($filePath), true);
+// TODO: refactor this using php array functions
+// TODO: consider removing default return
+function getBlockFormats()
+{
+    $config = getConfig();
+    if ($config && isset($config['blockstyles'])) {
+        $blockstyles = $config['blockstyles'];
         $blockstylesQueries = [];
         foreach ($blockstyles as $label => $tag) {
             $blockstylesQueries[] = $label . '=' . $tag;
         }
         return implode(';', $blockstylesQueries);
-    } else {
-        return 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
     }
+    return 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
 }
 
-function getStyleFormats($options)
+function getStyleFormats()
 {
-    if (isset($options[0]) && isset($options[0]['styleformatsConfigPath'])) {
-        $configPath = $options[0]['paths']['styleformatsConfigPath'];
-    } else {
-        $configPath = 'config/styleformats.json';
-    }
-
-    $filePath = Asset::requirePath('/Features/TinyMce/' . $configPath);
-    if (file_exists($filePath)) {
+    $config = getConfig();
+    if ($config && isset($config['styleformats'])) {
         // Get contents as JSON string first and convert it to array for sending it to style_formats as true js array
-        $loadedStyle = json_decode(file_get_contents($filePath), true);
+        $loadedStyle = $config['styleformats'];
         return json_encode($loadedStyle);
-    } else {
-        return false;
     }
+    return false;
 }
