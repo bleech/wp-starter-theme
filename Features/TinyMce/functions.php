@@ -9,8 +9,14 @@ use Flynt\Utils\Asset;
 
 // First Bar
 add_filter('mce_buttons', function ($buttons) {
-    $toolbars = getToolbars();
-    return $toolbars['default'][0];
+    $config = getConfig();
+    if ($config && isset($config['toolbars'])) {
+        $toolbars = $config['toolbars'];
+        if (isset($toolbars['default']) && isset($toolbars['default'][0])) {
+            return $toolbars['default'][0];
+        }
+    }
+    return $buttons;
 });
 
 // Second Bar
@@ -19,8 +25,17 @@ add_filter('mce_buttons_2', function ($buttons) {
 });
 
 add_filter('tiny_mce_before_init', function ($init) {
-    $init['block_formats'] = getBlockFormats();
-    $init['style_formats'] = getStyleFormats();
+    $config = getConfig();
+    if ($config) {
+        if (isset($config['blockstyles'])) {
+            $init['block_formats'] = getBlockFormats($config['blockstyles']);
+        }
+
+        if (isset($config['styleformats'])) {
+            // Get contents as JSON string first and convert it to array (in getConfig call) for sending it to style_formats as true js array
+            $init['style_formats'] = json_encode($config['styleformats']);
+        }
+    }
 
     return $init;
 });
@@ -28,12 +43,15 @@ add_filter('tiny_mce_before_init', function ($init) {
 // TODO: refactor this
 add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
     // Load Toolbars and parse them into TinyMCE
-    $toolbarsFromFile = getToolbars();
-    if ($toolbarsFromFile) {
-        $toolbars = [];
-        foreach ($toolbars as $name => $toolbar) {
-            array_unshift($toolbar, []);
-            $toolbars[$name] = $toolbar;
+    $config = getConfig();
+    if ($config && isset($config['toolbars'])) {
+        $toolbarsFromFile = $config['toolbars'];
+        if (!empty($toolbarsFromFile)) {
+            $toolbars = [];
+            foreach ($toolbars as $name => $toolbar) {
+                array_unshift($toolbar, []);
+                $toolbars[$name] = $toolbar;
+            }
         }
     }
 
@@ -50,37 +68,15 @@ function getConfig()
     }
 }
 
-function getToolbars() {
-    $config = getConfig();
-    if ($config && isset($config['toolbars'])) {
-        return $config['toolbars'];
-    }
-    return [];
-}
-
 // TODO: refactor this using php array functions
-// TODO: consider removing default return
-function getBlockFormats()
+function getBlockFormats($blockstyles)
 {
-    $config = getConfig();
-    if ($config && isset($config['blockstyles'])) {
-        $blockstyles = $config['blockstyles'];
+    if (!empty($blockstyles)) {
         $blockstylesQueries = [];
         foreach ($blockstyles as $label => $tag) {
             $blockstylesQueries[] = $label . '=' . $tag;
         }
         return implode(';', $blockstylesQueries);
     }
-    return 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;Heading 5=h5;Heading 6=h6';
-}
-
-function getStyleFormats()
-{
-    $config = getConfig();
-    if ($config && isset($config['styleformats'])) {
-        // Get contents as JSON string first and convert it to array for sending it to style_formats as true js array
-        $loadedStyle = $config['styleformats'];
-        return json_encode($loadedStyle);
-    }
-    return false;
+    return '';
 }
