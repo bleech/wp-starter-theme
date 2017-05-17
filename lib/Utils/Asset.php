@@ -3,6 +3,7 @@
 namespace Flynt\Utils;
 
 // TODO: add async & defer (see https://matthewhorne.me/defer-async-wordpress-scripts/); also add to cdn fallback
+// BUG: When there are several scripts registered, some with a CDN, some without, the CDN setting is only applied if it was set in the first instance.
 
 class Asset
 {
