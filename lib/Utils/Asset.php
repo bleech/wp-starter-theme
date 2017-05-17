@@ -92,11 +92,13 @@ class Asset
             $path = Asset::requireUrl($path);
         }
 
-        // TODO: What if a script is registered twice?
-        if (true === self::$loadFromCdn
+        if ('script' === $options['type']
+            && true === self::$loadFromCdn
             && !empty($options['cdn'])
             && !empty($options['cdn']['check'])
             && !empty($options['cdn']['url'])
+            && !wp_script_is($options['name'], 'registered')
+            && !wp_script_is($options['name'], 'enqueued')
         ) {
             $cdnCheck = $options['cdn']['check'];
             $localPath = $path;
