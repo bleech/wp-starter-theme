@@ -80,13 +80,6 @@
         "unlink",
         "fullscreen"
       ]
-    ],
-    "customToolbar": [
-      [
-        "bold",
-        "link",
-        "unlink"
-      ]
     ]
   }
 }
