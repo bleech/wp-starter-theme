@@ -19,4 +19,4 @@ add_action('wp_enqueue_scripts', function () {
         'type' => 'script',
         'path' => $jqueryLocalUrl
     ]);
-});
+}, 0); // NOTE: prio needs to be < 1
