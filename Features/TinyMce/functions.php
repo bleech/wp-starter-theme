@@ -5,9 +5,9 @@ namespace Flynt\Features\TinyMce;
 use Flynt\Utils\Feature;
 use Flynt\Utils\Asset;
 
-// Clean Up TinyMCE Buttons
+// Load TinyMCE Settings from config file
 
-// First Bar
+// First Toolbar
 add_filter('mce_buttons', function ($buttons) {
     $config = getConfig();
     if ($config && isset($config['toolbars'])) {
@@ -19,7 +19,8 @@ add_filter('mce_buttons', function ($buttons) {
     return $buttons;
 });
 
-// Second Bar
+// Second Toolbar
+// NOTE: feel free to edit this like in the first toolbar example if needed
 add_filter('mce_buttons_2', function ($buttons) {
     return [];
 });
