@@ -20,7 +20,6 @@ add_filter('mce_buttons', function ($buttons) {
 });
 
 // Second Toolbar
-// NOTE: feel free to edit this if needed (see the first toolbar example)
 add_filter('mce_buttons_2', function ($buttons) {
     return [];
 });
