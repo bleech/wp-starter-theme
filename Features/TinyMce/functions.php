@@ -20,7 +20,7 @@ add_filter('mce_buttons', function ($buttons) {
 });
 
 // Second Toolbar
-// NOTE: feel free to edit this like in the first toolbar example if needed
+// NOTE: feel free to edit this if needed (see the first toolbar example)
 add_filter('mce_buttons_2', function ($buttons) {
     return [];
 });
@@ -37,25 +37,18 @@ add_filter('tiny_mce_before_init', function ($init) {
             $init['style_formats'] = json_encode($config['styleformats']);
         }
     }
-
     return $init;
 });
 
-// TODO: refactor this
 add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
     // Load Toolbars and parse them into TinyMCE
     $config = getConfig();
-    if ($config && isset($config['toolbars'])) {
-        $toolbarsFromFile = $config['toolbars'];
-        if (!empty($toolbarsFromFile)) {
-            $toolbars = [];
-            foreach ($toolbars as $name => $toolbar) {
-                array_unshift($toolbar, []);
-                $toolbars[$name] = $toolbar;
-            }
-        }
+    if ($config && !empty($config['toolbars'])) {
+        $toolbars = array_map(function ($toolbar) {
+            array_unshift($toolbar, []);
+            return $toolbar;
+        }, $config['toolbars']);
     }
-
     return $toolbars;
 });
 
