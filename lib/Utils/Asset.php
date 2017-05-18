@@ -3,7 +3,6 @@
 namespace Flynt\Utils;
 
 // TODO: add async & defer (see https://matthewhorne.me/defer-async-wordpress-scripts/); also add to cdn fallback
-// BUG: When there are several scripts registered, some with a CDN, some without, the CDN setting is only applied if it was set in the first instance.
 
 class Asset
 {
@@ -98,12 +97,27 @@ class Asset
             && !empty($options['cdn'])
             && !empty($options['cdn']['check'])
             && !empty($options['cdn']['url'])
-            && !wp_script_is($options['name'], 'registered')
-            && !wp_script_is($options['name'], 'enqueued')
         ) {
-            $cdnCheck = $options['cdn']['check'];
-            $localPath = $path;
-            $path = $options['cdn']['url'];
+            // if the script isn't registered or enqueued yet
+            if (!wp_script_is($options['name'], 'registered')
+                && !wp_script_is($options['name'], 'enqueued')
+            ) {
+                $cdnCheck = $options['cdn']['check'];
+                $localPath = $path;
+                $path = $options['cdn']['url'];
+            } else {
+                // script already registered / enqueued
+                // get registered script and compare paths
+                $scriptPath = wp_scripts()->registered[$options['name']]->src;
+
+                // deregister script and set cdn options to re-register down below
+                if ($options['cdn']['url'] !== $scriptPath) {
+                    wp_deregister_script($options['name']);
+                    $cdnCheck = $options['cdn']['check'];
+                    $localPath = $path;
+                    $path = $options['cdn']['url'];
+                }
+            }
         }
 
         if (function_exists($funcName)) {
