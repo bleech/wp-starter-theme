@@ -102,7 +102,6 @@ class Asset
             if (!wp_script_is($options['name'], 'registered')
                 && !wp_script_is($options['name'], 'enqueued')
             ) {
-                $cdnCheck = $options['cdn']['check'];
                 $localPath = $path;
                 $path = $options['cdn']['url'];
             } else {
@@ -113,7 +112,6 @@ class Asset
                 // deregister script and set cdn options to re-register down below
                 if ($options['cdn']['url'] !== $scriptPath) {
                     wp_deregister_script($options['name']);
-                    $cdnCheck = $options['cdn']['check'];
                     $localPath = $path;
                     $path = $options['cdn']['url'];
                 }
@@ -130,6 +128,7 @@ class Asset
             );
 
             if (isset($localPath)) {
+                $cdnCheck = $options['cdn']['check'];
                 wp_add_inline_script(
                     $options['name'],
                     "${cdnCheck}||document.write(\"<script src=\\\"${localPath}\\\"><\/script>\")"
