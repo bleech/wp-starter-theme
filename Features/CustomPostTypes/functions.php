@@ -11,7 +11,7 @@ use Flynt\Features\CustomPostTypes\CustomPostTypeRegister;
 /* NOTE: this needs to happen on init to allow taxonomies to register
  * acf/init happens on init with priority 5
  * in order to make sure custom post types are registered before acf fields
- * (e.g. for option pages) are added the priority needs to be lower that 5
+ * (e.g. for option pages) are added the priority needs to be lower than 5
  */
 add_action('init', function () {
     $featureOptions = Feature::getOption('flynt-custom-post-types', 0);

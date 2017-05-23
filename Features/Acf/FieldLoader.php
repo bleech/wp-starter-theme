@@ -108,7 +108,7 @@ class FieldLoader
                 continue;
             }
             $subFieldName = ucfirst($subField['name']);
-            $subFilterName = $parentFilterName . "/{$subFieldName}";
+            $subFilterName =  "{$parentFilterName}/{$subFieldName}";
 
             add_filter($subFilterName, function ($subFieldConfig) use ($subField) {
                 return $subField;
