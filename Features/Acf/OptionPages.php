@@ -72,11 +72,9 @@ class OptionPages
 
         // Register Categories
         add_action('acf/init', function () {
-            foreach (self::$optionCategories as $categoryName => $categorySettings) {
-                $name = ucfirst($categoryName);
-                $registerFn = "add{$name}SubPages";
-                self::$registerFn();
-            }
+            self::addComponentSubPages();
+            self::addFeatureSubPages();
+            self::addCustomPostTypeSubPages();
         });
 
         add_filter(

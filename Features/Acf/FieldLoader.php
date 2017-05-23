@@ -2,10 +2,8 @@
 
 namespace Flynt\Features\Acf;
 
-use RecursiveDirectoryIterator;
 use Flynt\Utils\ArrayHelpers;
 use Flynt\Utils\StringHelpers;
-use Flynt\Utils\FileLoader;
 use Flynt\ComponentManager;
 
 class FieldLoader
@@ -65,12 +63,10 @@ class FieldLoader
     {
         $filePath = $dir . '/fields.json';
 
-        $name = StringHelpers::removePrefix('flynt', StringHelpers::kebapCaseToCamelCase($name));
-
         self::addFilters('feature', $name, $filePath);
     }
 
-    public static function addFilters($type, $name, $filePath)
+    public static function addFilters($category, $name, $filePath)
     {
         if (false === $filePath || !file_exists($filePath)) {
             return;
@@ -80,7 +76,7 @@ class FieldLoader
 
         foreach ($fields as $groupKey => $groupValue) {
             $groupKey = ucfirst($groupKey);
-            $filterNamespace = self::FILTER_NAMESPACES[$type];
+            $filterNamespace = self::FILTER_NAMESPACES[$category];
             $filterName = "{$filterNamespace}/{$name}/Fields/{$groupKey}";
 
             add_filter($filterName, function ($config) use ($groupValue) {
@@ -93,6 +89,7 @@ class FieldLoader
                 add_filter($filterName, function ($subFieldsconfig) use ($subFields) {
                     return $subFields;
                 });
+
                 self::addFilterForSubFields($filterName, $subFields);
             } elseif (is_array($groupValue)) {
                 self::addFilterForSubFields($filterName, $groupValue);
