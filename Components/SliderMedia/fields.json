@@ -1,11 +1,4 @@
 {
-  "translatableOptions": [
-    {
-      "name": "defaultTitleText",
-      "label": "Default Title Text",
-      "type": "text"
-    }
-  ],
   "layout": {
     "name": "sliderMedia",
     "label": "Slider: Media",
