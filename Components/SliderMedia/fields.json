@@ -1,18 +1,4 @@
 {
-  "globalOptions": [
-    {
-      "label": "Default Image",
-      "name": "defaultImage",
-      "type": "image",
-      "return_format": "array",
-      "preview_size": "thumbnail",
-      "library": "all",
-      "min_width": 1440,
-      "min_height": 720,
-      "instructions": "Recommended Size: Min-Width 1440px; Min-Height: 720px; Image-Format: JPG",
-      "mime_types": "jpg,jpeg"
-    }
-  ],
   "translatableOptions": [
     {
       "name": "defaultTitleText",
@@ -97,6 +83,7 @@
             "min_height": 720,
             "instructions": "Recommended Size: Min-Width 1440px; Min-Height: 720px; Image-Format: JPG",
             "mime_types": "jpg,jpeg",
+            "required": 1,
             "conditional_logic": [
               [
                 {
