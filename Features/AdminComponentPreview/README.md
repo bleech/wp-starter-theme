@@ -1,8 +1,8 @@
 # Admin Component Preview (Flynt Feature)
 
-Add a full width layout screenshot of a component to its component folder to show a preview in the Wordpress back end and front end.
+Add layout screenshots of a component to its component folder to show a preview in the front end and WordPress back end.
 
-Components previewed in multiple scenarios:
+Components can then be previewed in multiple scenarios:
 
 ## Front end
 
