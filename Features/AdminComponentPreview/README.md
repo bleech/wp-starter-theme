@@ -1,6 +1,6 @@
 # Admin Component Preview (Flynt Feature)
 
-Enables component's to be previewed in multiple scenarios:
+Enables components to be previewed in multiple scenarios:
 
 ## Front end
 
