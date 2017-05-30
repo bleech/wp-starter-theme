@@ -1,12 +1,12 @@
 # Admin Component Preview (Flynt Feature)
 
-Enables components to be previewed in multiple scenarios:
+Add a full width layout screenshot of a component to its component folder to show a preview in the Wordpress back end and front end.
+
+Components previewed in multiple scenarios:
 
 ## Front end
 
-Add a full width layout screenshot of a component to its component folder to show a preview in the Wordpress backend.
-
-When logged in, you can overlay the screenshots with opacity in the frontend for easy pixel perfect development by clicking the 'Component Preview' button in the WP Admin Bar, drag the images around and move each image with the arrow keys.
+When logged in, you can overlay the screenshots with opacity in the frontend for easy pixel perfect development by clicking the 'Component Preview' button in the WordPress Admin Bar, drag the images around and move each image with the arrow keys.
 
 ## Back end
 
