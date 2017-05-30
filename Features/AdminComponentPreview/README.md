@@ -1,10 +1,22 @@
 # Admin Component Preview (Flynt Feature)
 
+Enables component's to be previewed in multiple scenarios:
+
 ## Front-end
 
-- Enables Component Preview images toggle on the front-end when logged in :
-by clicking the 'Component Previews' button in the admin bar, it toggles the preview images and enables to drag and move each preview image to ease front-end development.
+Add a full width layout screenshot of a module to its module folder to show a preview in the Wordpress backend.
+
+When logged in, you can overlay the screenshots with opacity in the frontend for easy pixel perfect development by clicking the'Component Preview' button in the WP Admin Bar, drag the images around and move each image with the arrow keys.
 
 ## Back-end
-- Adds an image beside each component name in the admin backend.
-- Toggles the desktop and mobile preview images on rollover on the component name inside the component list (when clicking on the "Add Component" button)
+
+The preview image will be shown beside the component name in the flexible content group layout.
+
+Orollover on a component name inside the "Add Component" dropdown menu, it will show the desktop and mobile preview images.
+
+## Usage
+
+ Prepare a file size optimized  `preview-desktop.jpg` and `preview-mobile.jpg` for your component.
+
+- `preview-desktop.jpg` should be 1440x900 px.
+- `preview-mobile.jpg` should be 320x480 px.
