@@ -12,7 +12,7 @@ When logged in, you can overlay the screenshots with opacity in the frontend for
 
 The preview image will be shown beside the component name in the flexible content group layout.
 
-Orollover on a component name inside the "Add Component" dropdown menu, it will show the desktop and mobile preview images.
+On rollover on a component name inside the "Add Component" dropdown menu, it will show the desktop and mobile preview images.
 
 ## Usage
 
