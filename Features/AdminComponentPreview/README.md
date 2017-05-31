@@ -16,7 +16,7 @@ Rollover a component name inside the "Add Component" dropdown menu to see the de
 
 ## Usage
 
-Prepare a file size optimized  `preview-desktop.jpg` and `preview-mobile.jpg` for your component.
+Prepare a file size optimized `preview-desktop.jpg` and `preview-mobile.jpg` to put inside your component folder.
 
 - `preview-desktop.jpg` should be 1440x900 px.
 - `preview-mobile.jpg` should be 320x480 px.
