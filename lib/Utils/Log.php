@@ -23,12 +23,8 @@ class Log
     {
         $title .= '(' . self::getCallerFile(2) .'):';
         $type = gettype($data);
-        if (is_array($data) || is_object($data)) {
-            $output = json_encode($data);
-            $result =  "<script>console.{$logType}('{$title}', '({$type})', {$output});</script>\n";
-        } else {
-            $result = "<script>console.{$logType}('{$title}', '({$type})', '{$data}');</script>\n";
-        }
+        $output = json_encode($data);
+        $result =  "<script>console.{$logType}('{$title}', '({$type})', {$output});</script>\n";
         self::echoDebug($result, $postpone);
     }
 
