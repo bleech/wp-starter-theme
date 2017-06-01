@@ -240,7 +240,7 @@ add_filter('Flynt/addComponentData?name=ListPosts', function ($data, $parentData
 function addDataToAllPosts($posts) {
     if (is_array($posts)) {
         $posts = array_map(function ($post) {
-            $post->excerpt = $post->get_preview(50, false, 'More');
+            $post->excerpt = $post->get_preview(50, false, $data['readMoreLabel']);
             return $post;
         }, $posts);
     }
