@@ -123,7 +123,7 @@ class Log
     *
     * @since 0.1.0
     *
-    * @param number $depth  Depth to return.
+    * @param integer $depth  Depth to return.
     */
     protected static function getCallerFile($depth = 1)
     {
