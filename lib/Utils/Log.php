@@ -123,7 +123,9 @@ class Log
     *
     * @since 0.1.0
     *
-    * @param integer $depth  Depth to return.
+    * @param integer  $depth  Depth to return.
+    *
+    * @return string  The filename and line number.
     */
     protected static function getCallerFile($depth = 1)
     {
