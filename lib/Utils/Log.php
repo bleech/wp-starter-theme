@@ -7,12 +7,12 @@ class Log
     /**
     * Outputs a message to the Web Console.
     *
-    * Outputs a JavaScript console.log
+    * Outputs a JavaScript `console.log`.
     *
     * @since 0.1.0
     *
-    * @param mixed    $data     data to be logged.
-    * @param boolean  $postpone postpone logging to the wp_footer action.
+    * @param mixed    $data     Data to be logged.
+    * @param boolean  $postpone Postpone logging to the wp_footer action.
     */
     public static function console($data, $postpone = true)
     {
@@ -22,12 +22,12 @@ class Log
     /**
     * Outputs an error message to the Web Console.
     *
-    * Outputs a JavaScript error.log
+    * Outputs a JavaScript `error.log`.
     *
     * @since 0.1.0
     *
-    * @param mixed    $data     data to be logged.
-    * @param boolean  $postpone postpone logging to the wp_footer action.
+    * @param mixed    $data     Data to be logged.
+    * @param boolean  $postpone Postpone logging to the wp_footer action.
     */
     public static function error($data, $postpone = true)
     {
@@ -41,8 +41,8 @@ class Log
     *
     * @since 0.1.0
     *
-    * @param mixed    $data     data to be printed.
-    * @param boolean  $postpone postpone printing to the wp_footer action.
+    * @param mixed    $data     Data to be printed.
+    * @param boolean  $postpone Postpone printing to the wp_footer action.
     */
     public static function pp($data, $postpone = true)
     {
@@ -58,10 +58,10 @@ class Log
     *
     * @since 0.1.0
     *
-    * @param mixed    $data     data to be logged.
-    * @param boolean  $postpone postpone logging to the wp_footer action.
-    * @param string   $title    title.
-    * @param string   $logType  type of log (accepts log|error|trace).
+    * @param mixed    $data     Data to be logged.
+    * @param boolean  $postpone Postpone logging to the wp_footer action.
+    * @param string   $title    A title.
+    * @param string   $logType  The type of log (accepts log|error|trace).
     */
     public static function consoleDebug($data, $postpone = true, $title = 'PHP', $logType = 'log')
     {
@@ -83,8 +83,8 @@ class Log
     *
     * @since 0.2.0
     *
-    * @param mixed    $data     data to be printed.
-    * @param boolean  $postpone postpone printing to the wp_footer action.
+    * @param mixed    $data     Data to be printed.
+    * @param boolean  $postpone Postpone printing to the wp_footer action.
     */
     public static function printDebug($data, $postpone = true)
     {
@@ -104,8 +104,8 @@ class Log
     *
     * @since 0.2.0
     *
-    * @param mixed    $data     data to be printed.
-    * @param boolean  $postpone postpone printing to the wp_footer action.
+    * @param mixed    $data     Data to be printed.
+    * @param boolean  $postpone Postpone printing to the wp_footer action.
     */
     protected static function echoDebug($data, $postpone)
     {
@@ -123,7 +123,7 @@ class Log
     *
     * @since 0.1.0
     *
-    * @param number $depth  depth to return.
+    * @param number $depth  Depth to return.
     */
     protected static function getCallerFile($depth = 1)
     {
