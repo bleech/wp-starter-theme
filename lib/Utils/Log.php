@@ -41,7 +41,7 @@ class Log
     *
     * @since 0.1.0
     *
-    * @param mixed    $data  data to be printed.
+    * @param mixed    $data     data to be printed.
     * @param boolean  $postpone postpone printing to the wp_footer action.
     */
     public static function pp($data, $postpone = true)
@@ -60,8 +60,8 @@ class Log
     *
     * @param mixed    $data     data to be logged.
     * @param boolean  $postpone postpone logging to the wp_footer action.
-    * @param string   $title     title.
-    * @param string   $logType   type of log (accepts log|error|trace).
+    * @param string   $title    title.
+    * @param string   $logType  type of log (accepts log|error|trace).
     */
     public static function consoleDebug($data, $postpone = true, $title = 'PHP', $logType = 'log')
     {
@@ -83,7 +83,7 @@ class Log
     *
     * @since 0.2.0
     *
-    * @param mixed    $data  data to be printed.
+    * @param mixed    $data     data to be printed.
     * @param boolean  $postpone postpone printing to the wp_footer action.
     */
     public static function printDebug($data, $postpone = true)
