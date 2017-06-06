@@ -58,7 +58,7 @@ class StringHelpers
     * @since 0.1.0
     *
     * @param string $str                        The string to convert.
-    * @param boolean $capitalizeFirstCharacter  Sets if the first character should be Capitalized.
+    * @param boolean $capitalizeFirstCharacter  Sets if the first character should be capitalized.
     */
     public static function kebapCaseToCamelCase($str, $capitalizeFirstCharacter = false)
     {
@@ -75,7 +75,7 @@ class StringHelpers
     * @since 0.1.0
     *
     * @param string $prefix The prefix to be removed.
-    * @param string $str    The entire string to manipulate.
+    * @param string $str    The string to manipulate.
     */
     public static function removePrefix($prefix, $str)
     {
@@ -108,7 +108,7 @@ class StringHelpers
     * @param string $search   The string to search.
     * @param string $subject  The string to look into.
 
-    * @return boolean Retunrs true if the subject string ends with the search string.
+    * @return boolean Returns true if the subject string ends with the search string.
     */
     public static function endsWith($search, $subject)
     {
