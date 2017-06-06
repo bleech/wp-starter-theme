@@ -5,11 +5,13 @@ namespace Flynt\Utils;
 class StringHelpers
 {
     /**
-    * Converts a string from Camel case to Kebap case.
+    * Converts a string from camel case to kebap case.
     *
     * @since 0.1.0
     *
-    * @param string $str  The string to convert.
+    * @param string $str The string to convert.
+    *
+    * @return string
     */
     public static function camelCaseToKebap($str)
     {
@@ -17,13 +19,15 @@ class StringHelpers
     }
 
     /**
-    * Strip all HTML tags including script and style,
+    * Strips all HTML tags including script and style,
     * and trims text to a certain number of words.
     *
     * @since 0.1.0
     *
     * @param string $str    The string to trim and strip.
-    * @param number $length The string lenght to return.
+    * @param number $length The string length to return.
+    *
+    * @return string
     */
     public static function trimStrip($str, $length = 25)
     {
@@ -34,11 +38,13 @@ class StringHelpers
     }
 
     /**
-    * Splits a Camel case string.
+    * Splits a camel case string.
     *
     * @since 0.1.0
     *
-    * @param string $str  The string to split.
+    * @param string $str The string to split.
+    *
+    * @return string
     */
     public static function splitCamelCase($str)
     {
@@ -53,12 +59,14 @@ class StringHelpers
     }
 
     /**
-    * Converts a string from Kebap case to Camel case.
+    * Converts a string from kebap case to camel case.
     *
     * @since 0.1.0
     *
     * @param string $str                        The string to convert.
     * @param boolean $capitalizeFirstCharacter  Sets if the first character should be capitalized.
+    *
+    * @return string
     */
     public static function kebapCaseToCamelCase($str, $capitalizeFirstCharacter = false)
     {
@@ -76,6 +84,8 @@ class StringHelpers
     *
     * @param string $prefix The prefix to be removed.
     * @param string $str    The string to manipulate.
+    *
+    * @return string
     */
     public static function removePrefix($prefix, $str)
     {
@@ -90,7 +100,7 @@ class StringHelpers
     *
     * @since 0.1.0
     *
-    * @param string $search   The string to search.
+    * @param string $search   The string to search for.
     * @param string $subject  The string to look into.
 
     * @return boolean Returns true if the subject string starts with the search string.
@@ -105,7 +115,7 @@ class StringHelpers
     *
     * @since 0.1.0
     *
-    * @param string $search   The string to search.
+    * @param string $search   The string to search for.
     * @param string $subject  The string to look into.
 
     * @return boolean Returns true if the subject string ends with the search string.
