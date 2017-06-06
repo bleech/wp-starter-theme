@@ -30,7 +30,7 @@ class Log
         }
     }
 
-    public static function printDebug($data, $postpone)
+    public static function printDebug($data, $postpone = true)
     {
         $type = gettype($data);
         $output = '<pre>';
