@@ -5,14 +5,14 @@ namespace Flynt\Utils;
 class ArrayHelpers
 {
     /**
-    * Checks if an array is associative.
-    *
-    * @since 0.1.0
-    *
-    * @param array $array The array to check.
-    *
-    * @return boolean
-    */
+     * Checks if an array is associative.
+     *
+     * @since 0.1.0
+     *
+     * @param array $array The array to check.
+     *
+     * @return boolean
+     */
     public static function isAssoc(array $array)
     {
         // Keys of the array
@@ -24,14 +24,14 @@ class ArrayHelpers
     }
 
     /**
-    * Converts indexed values to associative keys.
-    *
-    * @since 0.1.0
-    *
-    * @param array $array The array to convert.
-    *
-    * @return array
-    */
+     * Converts indexed values to associative keys.
+     *
+     * @since 0.1.0
+     *
+     * @param array $array The array to convert.
+     *
+     * @return array
+     */
     public static function indexedValuesToAssocKeys(array $array)
     {
         $values = array_map(function ($value) {
