@@ -22,7 +22,7 @@ class Log
     /**
     * Outputs an error message to the Web Console.
     *
-    * Outputs a JavaScript `error.log`.
+    * Outputs a JavaScript `console.error`.
     *
     * @since 0.1.0
     *
