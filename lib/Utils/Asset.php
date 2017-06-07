@@ -17,21 +17,59 @@ class Asset
     protected static $assetManifest;
     protected static $loadFromCdn = false;
 
+    /**
+    * Gets the asset's url.
+    *
+    * @since 0.1.0
+    *
+    * @param string $asset The required asset.
+    *
+    * @return string/boolean Returns the url or false if the asset is not found.
+    */
     public static function requireUrl($asset)
     {
         return self::get('url', $asset);
     }
 
+    /**
+    * Gets the asset's path.
+    *
+    * @since 0.1.0
+    *
+    * @param string $asset The required asset.
+    *
+    * @return string/boolean Returns the path or false if the asset is not found.
+    */
     public static function requirePath($asset)
     {
         return self::get('path', $asset);
     }
 
+    /**
+    * Registers an asset.
+    * It can register a script or a style.
+    *
+    * @since 0.1.0
+    *
+    * @param array $options Options must specify a type (script|style), a name and a path.
+    *
+    * @return boolean
+    */
     public static function register($options)
     {
         return self::add('register', $options);
     }
 
+    /**
+    * Enqueues an asset.
+    * It can enqueue a script or a style.
+    *
+    * @since 0.1.0
+    *
+    * @param array $options Options must specify a type (script|style), a name and a path.
+    *
+    * @return boolean
+    */
     public static function enqueue($options)
     {
         return self::add('enqueue', $options);
@@ -142,10 +180,10 @@ class Asset
     }
 
     /**
-     * Getter and setter for the loadFromCdn setting.
-     *
-     * @param boolean $load (optional) Value to set the parameter to.
-     **/
+    * Getter and setter for the loadFromCdn setting.
+    *
+    * @param boolean $load (optional) Value to set the parameter to.
+    **/
     public static function loadFromCdn($load = null)
     {
         if (!isset($load)) {
