@@ -9,14 +9,24 @@ module.exports = function (config) {
       // read current version from package.json
       config.replaceVersion.php.to = pjson.version
       gutil.log(`Replacing ${config.replaceVersion.php.from} with ${config.replaceVersion.php.to} in all PHP files.`)
-      replace.sync(config.replaceVersion.php)
+      const changedFilesPhp = replace.sync(config.replaceVersion.php)
+      for (const file of changedFilesPhp) {
+        gutil.log(`Updated ${file}`)
+      }
 
       // replace WordPress theme version in style.css
       gutil.log('Updating WordPress theme version.')
       config.replaceVersion.wordpress.to += pjson.version
-      replace.sync(config.replaceVersion.wordpress)
+      const changedFilesWp = replace.sync(config.replaceVersion.wordpress)
+      if (changedFilesWp.length > 0) {
+        for (const file of changedFilesWp) {
+          gutil.log(`Updated ${file}`)
+        }
+      } else {
+        gutil.log(gutil.colors.yellow('No changes made! Was the version already changed?'))
+      }
     } catch (error) {
-      gutil.error('Error occurred:', error)
+      gutil.error('An error occurred:', error)
     }
     cb()
   })
