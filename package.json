@@ -8,7 +8,7 @@
   "scripts": {
     "start": "check-node-version --package && gulp",
     "build": "check-node-version --package && NODE_ENV=production gulp build",
-    "release": "standard-version",
+    "release": "standard-version -a",
     "releaseGithub": "conventional-github-releaser -p angular"
   },
   "devDependencies": {
