@@ -65,5 +65,9 @@ module.exports = {
       standard: 'phpcs.ruleset.xml',
       binaryPath: '../../../../vendor/bin/phpcs'
     }
+  },
+  replaceVersion: {
+    files: '!(node_modules|bower_components|dist)/**/*.php',
+    from: '%%NEXT_VERSION%%'
   }
 }
