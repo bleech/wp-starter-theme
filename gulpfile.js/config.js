@@ -67,7 +67,14 @@ module.exports = {
     }
   },
   replaceVersion: {
-    files: '!(node_modules|bower_components|dist)/**/*.php',
-    from: '%%NEXT_VERSION%%'
+    wordpress: {
+      files: './style.css',
+      from: /Version: (.*)/gi,
+      to: 'Version: '
+    },
+    php: {
+      files: '!(node_modules|bower_components|dist)/**/*.php',
+      from: '%%NEXT_VERSION%%'
+    }
   }
 }
