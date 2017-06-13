@@ -75,7 +75,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "gulp replaceVersion"
+      "postbump": "gulp replaceVersion && git add ."
     }
   },
   "dependencies": {},
