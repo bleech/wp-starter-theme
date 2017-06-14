@@ -9,13 +9,15 @@ class Feature
     private static $features = [];
 
     /**
-     * Gets a feature options.
+     * Gets all options for a feature.
+     *
+     * Returns all parameters passed to `add_theme_support` in the lib/Init.php file.
      *
      * @since 0.1.0
      *
-     * @param string $feature The feature name.
+     * @param string $feature Name of the feature.
      *
-     * @return array/null Returns the options or null.
+     * @return array|null Returns an array of options or null if the feature wasn't found.
      */
     public static function getOptions($feature)
     {
@@ -24,14 +26,16 @@ class Feature
     }
 
     /**
-     * Gets a feature option.
+     * Gets single option for a feature.
+     *
+     * Returns a single parameter passed to `add_theme_support` in the lib/Init.php file using the key (starting with 0) of that option.
      *
      * @since 0.1.0
      *
-     * @param string $feature The feature name.
+     * @param string $feature Name of the feature.
      * @param string $key The option key.
      *
-     * @return mixed/null Returns the options or null.
+     * @return mixed|null Returns the option or null if the option / the feature doesn't exist.
      */
     public static function getOption($feature, $key)
     {
@@ -40,13 +44,13 @@ class Feature
     }
 
     /**
-     * Gets a feature directory.
+     * Gets the absolute path of a feature.
      *
      * @since 0.1.0
      *
-     * @param string $feature The feature name.
+     * @param string $feature Name of the feature.
      *
-     * @return string Returns the directory.
+     * @return string
      */
     public static function getDir($feature)
     {
@@ -59,7 +63,7 @@ class Feature
      *
      * @since 0.1.0
      *
-     * @param string $feature The feature name.
+     * @param string $feature Name of the feature.
      * @param string $basePath The feature base path.
      * @param array $options An array of options. Optional.
      *
@@ -111,13 +115,13 @@ class Feature
     }
 
     /**
-     * Gets a feature.
+     * Gets a registered feature.
      *
      * @since 0.1.0
      *
-     * @param string $name The feature name.
+     * @param string $name Name of the feature.
      *
-     * @return array
+     * @return array Returns an array with feature options and its directory.
      */
     public static function getFeature($name)
     {
@@ -128,11 +132,11 @@ class Feature
     }
 
     /**
-     * Gets all the features.
+     * Gets all registered features.
      *
      * @since 0.1.0
      *
-     * @return array
+     * @return array Array of features with their options and directory.
      */
     public static function getFeatures()
     {
@@ -140,11 +144,11 @@ class Feature
     }
 
     /**
-     * Sets the initial file of a feature.
+     * Sets the initial file to be required for a feature.
      *
      * @since 0.1.0
      *
-     * @param string $fileName The filename.
+     * @param string $fileName File name or path relative to a feature's directory.
      */
     public static function setInitialFile($fileName)
     {
