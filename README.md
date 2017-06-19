@@ -167,7 +167,7 @@ flynt-starter-theme/             # → Root of the theme
 ├── yarn.lock                    # → Yarn lock file (never edit)
 ```
 
-**The full documentation is coming soon.**
+[You can read the full documentation here.](https://docs.flyntwp.com)
 
 ## Maintainers
 
@@ -180,9 +180,10 @@ The main people in charge of this repo are:
 
 ## Contribute
 
-To contribute, please use github [issues](https://github.com/flyntwp/flynt-starter-theme/issues). Pull requests are accepted.
+To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt-starter-theme/issues). Pull requests are accepted. Please also take a moment to read the [contributing guidelines](https://github.com/flyntwp/guidelines/blob/master/CONTRIBUTING.md) and [code of conduct](https://github.com/flyntwp/guidelines/blob/master/CODE_OF_CONDUCT.md).
 
 If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
+
 
 ## License
 
