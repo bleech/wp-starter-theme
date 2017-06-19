@@ -180,7 +180,7 @@ The main people in charge of this repo are:
 
 ## Contribute
 
-To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt-starter-theme/issues). Pull requests are accepted. Please also take a moment to read the [Contributing Guidelines](https://github.com/flyntwp/guidelines/blob/master/CONTRIBUTING.md) and [Code of Conduct](https://github.com/flyntwp/guidelines/blob/master/CODE_OF_CONDUCT.md).
+To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt-starter-theme/issues). Pull requests are accepted. Please also take a moment to read the [Flynt Contributing Guidelines](https://github.com/flyntwp/guidelines/blob/master/CONTRIBUTING.md) and [Code of Conduct](https://github.com/flyntwp/guidelines/blob/master/CODE_OF_CONDUCT.md).
 
 If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
