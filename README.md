@@ -184,7 +184,6 @@ To contribute, please use GitHub [issues](https://github.com/flyntwp/flynt-start
 
 If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
 
-
 ## License
 
 MIT © [bleech](https://www.bleech.de)
