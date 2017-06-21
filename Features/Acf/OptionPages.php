@@ -118,29 +118,46 @@ class OptionPages
      **/
     public static function get($optionType, $optionCategory, $subPageName, $fieldName = null)
     {
-        // check if required hooks have run yet
+        if (!self::checkRequiredHooks($optionType, $optionCategory, $subPageName, $fieldName)) {
+            return false;
+        }
+
+        // convert parameters
+        $optionType = lcfirst($optionType);
+        $optionCategory = ucfirst($optionCategory);
+        $subPageName = ucfirst($subPageName);
+
+        if (!isset(self::$optionTypes[$optionType])) {
+            return false;
+        }
+
+        $prefix = implode('', [$optionType, $optionCategory, $subPageName, '_']);
+        $options = self::getOptionFields(self::$optionTypes[$optionType]['translatable']);
+        $options = self::collectOptionsWithPrefix($options, $prefix);
+
+        if (isset($fieldName)) {
+            $fieldName = lcfirst($fieldName);
+            return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
+        }
+        return $options;
+    }
+
+    protected static function checkRequiredHooks($optionType, $optionCategory, $subPageName, $fieldName)
+    {
         if (did_action('acf/init') < 1) {
             $parameters = "${optionType}, ${optionCategory}, ${subPageName}, ";
             $parameters .= isset($fieldName) ? $fieldName : 'NULL';
             trigger_error("Could not get option/s for [${parameters}]. Required hooks have not yet been executed! Please make sure to run `OptionPages::get()` after the `acf/init` action is finished.", E_USER_WARNING);
             return false;
         }
+        return true;
+    }
 
-        $optionType = lcfirst($optionType);
-
-        if (!isset(self::$optionTypes[$optionType])) {
-            return false;
-        }
-
-        $optionCategory = ucfirst($optionCategory);
-        $subPageName = ucfirst($subPageName);
-
-        $prefix = implode('', [$optionType, $optionCategory, $subPageName, '_']);
-        $options = self::getOptionFields(self::$optionTypes[$optionType]['translatable']);
-
-        // find and replace relevant keys, then return an array of all options for this Sub-Page
+    // find and replace relevant keys, then return an array of all options for this Sub-Page
+    protected static function collectOptionsWithPrefix($options, $prefix)
+    {
         $optionKeys = is_array($options) ? array_keys($options) : [];
-        $options = array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
+        return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
             $count = 0;
             $option = $options[$key];
             $key = str_replace($prefix, '', $key, $count);
@@ -149,12 +166,6 @@ class OptionPages
             }
             return $carry;
         }, []);
-
-        if (isset($fieldName)) {
-            $fieldName = lcfirst($fieldName);
-            return array_key_exists($fieldName, $options) ? $options[$fieldName] : false;
-        }
-        return $options;
     }
 
     // ============
