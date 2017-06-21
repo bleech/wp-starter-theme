@@ -142,32 +142,6 @@ class OptionPages
         return $options;
     }
 
-    protected static function checkRequiredHooks($optionType, $optionCategory, $subPageName, $fieldName)
-    {
-        if (did_action('acf/init') < 1) {
-            $parameters = "${optionType}, ${optionCategory}, ${subPageName}, ";
-            $parameters .= isset($fieldName) ? $fieldName : 'NULL';
-            trigger_error("Could not get option/s for [${parameters}]. Required hooks have not yet been executed! Please make sure to run `OptionPages::get()` after the `acf/init` action is finished.", E_USER_WARNING);
-            return false;
-        }
-        return true;
-    }
-
-    // find and replace relevant keys, then return an array of all options for this Sub-Page
-    protected static function collectOptionsWithPrefix($options, $prefix)
-    {
-        $optionKeys = is_array($options) ? array_keys($options) : [];
-        return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
-            $count = 0;
-            $option = $options[$key];
-            $key = str_replace($prefix, '', $key, $count);
-            if ($count > 0) {
-                $carry[$key] = $option;
-            }
-            return $carry;
-        }, []);
-    }
-
     // ============
     // COMPONENTS
     // ============
@@ -360,6 +334,17 @@ class OptionPages
         }, $fields);
     }
 
+    protected static function checkRequiredHooks($optionType, $optionCategory, $subPageName, $fieldName)
+    {
+        if (did_action('acf/init') < 1) {
+            $parameters = "${optionType}, ${optionCategory}, ${subPageName}, ";
+            $parameters .= isset($fieldName) ? $fieldName : 'NULL';
+            trigger_error("Could not get option/s for [${parameters}]. Required hooks have not yet been executed! Please make sure to run `OptionPages::get()` after the `acf/init` action is finished.", E_USER_WARNING);
+            return false;
+        }
+        return true;
+    }
+
     protected static function getOptionFields($translatable)
     {
         global $sitepress;
@@ -401,6 +386,21 @@ class OptionPages
         }
 
         return $options;
+    }
+
+    // find and replace relevant keys, then return an array of all options for this Sub-Page
+    protected static function collectOptionsWithPrefix($options, $prefix)
+    {
+        $optionKeys = is_array($options) ? array_keys($options) : [];
+        return array_reduce($optionKeys, function ($carry, $key) use ($options, $prefix) {
+            $count = 0;
+            $option = $options[$key];
+            $key = str_replace($prefix, '', $key, $count);
+            if ($count > 0) {
+                $carry[$key] = $option;
+            }
+            return $carry;
+        }, []);
     }
 
     protected static function combineArrayDefaults(array $array, array $defaults)
