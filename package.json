@@ -71,7 +71,7 @@
     "parser": "babel-eslint"
   },
   "engines": {
-    "node": "^6.0.0"
+    "node": ">=6.0.0"
   },
   "standard-version": {
     "scripts": {
