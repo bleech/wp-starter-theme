@@ -1,6 +1,6 @@
 let providers = {}
 
-// magic to load all files from ./Providers folder into providers variable
+// load all files from ./Providers folder into providers variable
 function importAll (moduleRequire) {
   moduleRequire.keys().forEach(key => {
     providers[key.substr(2, key.length - 5)] = moduleRequire(key).init
