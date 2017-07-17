@@ -1,0 +1,72 @@
+$colorBars = lookup('$globalColorAccent') || #333
+$colorBarsActive = lookup('$globalColorAccent') || #111
+$width = 30px
+$height = 20px
+$barHeight = 2px
+$animationSpeed = .15s
+
+.hamburger
+  background: transparent
+  border: 0
+  bottom: 0
+  cursor: pointer
+  display: none
+  height: $height
+  margin: auto
+  outline: 0
+  position: absolute
+  right: 15px
+  top: 0
+  width: $width
+
+  &:before,
+  &:after
+    content: ''
+
+  &:before,
+  &:after,
+  &-barPrimary,
+  &-barSecondary
+    background: $colorBars
+    display: block
+    height: $barHeight
+    left: 0
+    position: absolute
+    width: $width
+    transition: opacity $animationSpeed ease-in-out, transform $animationSpeed ease-in-out, background $animationSpeed ease-in-out
+
+  &:before
+    top: 0
+
+  &-barPrimary,
+  &-barSecondary
+    top: ceil((($height / 3) * 1.5)) - ($barHeight / 2)
+
+  &:after
+    top: (($height / 3) * 3) - $barHeight
+
+  +below('s')
+    display: block
+
+  ~/.navigationMain-isActive .hamburger
+    &:before,
+    &:after
+      opacity: 0
+
+    &:before
+      transform: scale(0) translateY(10px)
+
+    &:after
+      transform: scale(0) translateY(-10px)
+
+    &-barPrimary
+      transform: rotate(45deg)
+
+    &-barSecondary
+      transform: rotate(-45deg)
+
+    &:before,
+    &:after,
+    &-barPrimary,
+    &-barSecondary
+      background: $colorBarsActive

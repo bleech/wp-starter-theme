@@ -1,7 +1,13 @@
 <nav is="flynt-navigation-main" class="flyntComponent">
   <div class="navigationMain">
+    <div class="navigationMain-head">
+      {% if brandLogo %}
+        {% include 'Partials/BrandLogo/index.twig' %}
+      {% endif %}
+      {% include 'Partials/Hamburger/index.twig' %}
+    </div>
     {% if menu %}
-      {% include 'Partials/Menu/index.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': maxLevel } only %}
+      {% include 'Partials/Menu/index.twig' with { 'items': menu.get_items, 'level': '0', 'maxLevel': 0 } %}
     {% endif %}
   </div>
 </nav>

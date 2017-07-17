@@ -1,2 +1,61 @@
+$colorMenuLink = lookup('$globalColorText') || #aaa
+$colorMenuLinkHover = lookup('$globalColorAccent') || #333
+$colorMenuLinkMobile = lookup('$globalColorAccent') || #1e1e1e
+$colorMenuBackground = lookup('$globalColorTransparent') || rgba(255, 255, 255, .90)
+$navigationHeight = lookup('$globalNavHeight') || 64px
+$colorBackground = lookup('$globalColorBackground') || #fff
+$colorAccent = lookup('$globalColorAccent') || #F98928
+
 .menu
-  // code
+  &--level0
+    clearfix()
+    float: right
+    list-style: none
+    margin: 0
+    padding: 0
+
+    +below('s')
+      background: $colorMenuBackground
+      height: 100%
+      left: 0
+      margin: 0
+      opacity: 0
+      overflow: auto
+      padding-top: $navigationHeight
+      position: fixed
+      top: 0
+      transition: opacity .35s, visibility .35s
+      visibility: hidden
+      width: 100%
+      z-index: 10
+
+      &.menu-hasNoTransition
+        transition: none
+
+      ~/.navigationMain-isActive .menu.menu--level0
+        visibility: visible
+        opacity: 1
+
+.menu .menu-item
+  &--level0
+    float: left
+    margin: 0
+    padding: 0
+    position: relative
+
+    +below('s')
+      display: block
+      float: none
+
+    &.current-menu-item,
+    &.current-menu-ancestor,
+    &:hover
+      & .menu-link--level0
+        color: $colorAccent
+
+        +below('s')
+          color: $colorAccent
+
+.menu .menu-link
+  &--level0
+    color: #000

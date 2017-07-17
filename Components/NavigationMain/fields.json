@@ -1,0 +1,12 @@
+{
+  "globalOptions": [
+    {
+      "name": "brandLogo",
+      "label": "Brand Logo",
+      "type": "image",
+      "mime_types": "svg",
+      "instructions": "Image-Format: SVG.",
+      "required": 1
+    }
+  ]
+}
