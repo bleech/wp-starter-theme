@@ -1,0 +1,12 @@
+{% if providers %}
+  <div class="share">
+    <div class="share-label">{{ labelShareTo }}: </div>
+    <ul class="share-list">
+      {% for provider in providers %}
+        <li class="share-item">
+          <a href="{{ provider.shareUrl }}" class="share-link {{ provider.class }}" target="_blank" rel="noopener noreferrer">{{ provider.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

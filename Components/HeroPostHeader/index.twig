@@ -1,0 +1,25 @@
+<div class="flyntComponent" is="flynt-hero-post-header">
+  <div class="postHeader">
+    {% include './Partials/Thumbnail/index.twig' %}
+    <h1 class="postHeader-title">{{ post.title }}</h1>
+    <div class="postHeader-meta">
+      <div class="postHeader-metaRow">
+        <div class="postHeader-metaField">
+          {% include './Partials/PublishDate/index.twig' %}
+        </div>
+        <div class="postHeader-metaField">
+          {% include './Partials/Author/index.twig' %}
+        </div>
+      </div>
+      <div class="postHeader-metaRow">
+        <div class="postHeader-metaField">
+          {% include './Partials/Categories/index.twig' %}
+        </div>
+        <div class="postHeader-metaField">
+          {% include './Partials/Tags/index.twig' %}
+        </div>
+      </div>
+    </div>
+    {% include './Partials/Share/index.twig' %}
+  </div>
+</div>

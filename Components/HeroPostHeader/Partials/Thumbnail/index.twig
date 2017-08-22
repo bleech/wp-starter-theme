@@ -1,0 +1,10 @@
+<div class="thumbnail">
+  <img class="thumbnail-image" srcset="
+    {{ post.thumbnail.src | resize(576, 280) }} 576w,
+    {{ post.thumbnail.src | resize(768, 373) }} 768w,
+    {{ post.thumbnail.src | resize(1110, 540) }} 1110w,
+    {{ post.thumbnail.src | resize(1440, 700) }} 1440w"
+    src="{{ post.thumbnail.src | resize(1440, 700) }}"
+    sizes="(min-width: 1140px) 1110px, calc(100vw - 30px)"
+    alt="{{ post.thumbnail.alt }}">
+</div>

@@ -1,0 +1,50 @@
+{
+  "translatableOptions": [
+    {
+      "label": "Label: Written by",
+      "name": "labelWrittenBy",
+      "type": "text",
+      "required": 1,
+      "default_value": "Written by"
+    },
+    {
+      "label": "Label: Published in",
+      "name": "labelPublishedIn",
+      "type": "text",
+      "required": 1,
+      "default_value": "Published in"
+    },
+    {
+      "label": "Label: Published at",
+      "name": "labelPublishedAt",
+      "type": "text",
+      "required": 1,
+      "default_value": "Published at"
+    },
+    {
+      "label": "Label: Share to",
+      "name": "labelShareTo",
+      "type": "text",
+      "required": 1,
+      "default_value": "Share to"
+    },
+    {
+      "label": "Label: Tags",
+      "name": "labelTags",
+      "type": "text",
+      "required": 1,
+      "default_value": "Tags"
+    }
+  ],
+  "layout": {
+    "name": "heroPostHeader",
+    "label": "Hero Post Header",
+    "sub_fields": [
+      {
+        "label": "Text",
+        "name": "text",
+        "type": "text"
+      }
+    ]
+  }
+}

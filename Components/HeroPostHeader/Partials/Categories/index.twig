@@ -1,0 +1,12 @@
+{% if post.categories %}
+  <div class="categories">
+    <span class="categories-label">{{ labelPublishedIn }}: </span>
+    <ul class="categories-list">
+      {% for category in post.categories %}
+        <li class="categories-category">
+          <a href="{{ category.link }}" class="categories-categoryLink">{{ category.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
