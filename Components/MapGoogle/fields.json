@@ -1,0 +1,31 @@
+{
+  "layout": {
+    "name": "mapGoogle",
+    "label": "Map Google",
+    "sub_fields": [
+      {
+        "label": "Info Content",
+        "name": "infoContent",
+        "type": "wysiwyg",
+        "delay": 1
+      },
+      {
+        "label": "Location",
+        "name": "location",
+        "type": "google_map",
+        "required": 1
+      },
+      {
+        "label": "Maps Zoom Level",
+        "name": "zoomLevel",
+        "type": "number",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "required": 1,
+        "default_value": 10,
+        "instructions": "Enter your desired zoom level for the map.<br />1: Zoomed out<br />20: Zoomed in"
+      }
+    ]
+  }
+}

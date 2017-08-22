@@ -1,0 +1,18 @@
+$rupture.scale = lookup('$globalLayoutScale') || (0 575px 767px 991px 1199px)
+$rupture.anti-overlap = lookup('$globalLayoutOverlap') || -1px
+$containerPadding = lookup('$globalLayoutContainerPadding') || 15px
+$containerMaxWidth = lookup('$globalLayoutContainerMaxWidth') || 1140px
+
+.flyntComponent[is="flynt-map-google"]
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .map
+    &-wrapper
+      height: 600px
+      width: 100%
+
+      +below('m')
+        height: 450px
