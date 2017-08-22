@@ -1,0 +1,41 @@
+$rupture.scale = lookup('$globalLayoutScale') || (0 575px 767px 991px 1199px)
+$rupture.anti-overlap = lookup('$globalLayoutOverlap') || -1px
+$gutterWidth = lookup('$globalLayoutGutterWidth') || 1.5
+$containerPadding = lookup('$globalLayoutContainerPadding') || 15px
+$containerMaxWidth = lookup('$globalLayoutContainerMaxWidth') || 1140px
+
+.flyntComponent[is="flynt-block-cookie-notification"]
+  bottom: 0
+  display: none
+  left: 0
+  position: fixed
+  width: 100%
+  z-index: 9
+
+  &.cookieNotification-isVisible
+    display: block
+
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .notification
+    background: #fff
+    padding-bottom: 5px
+    padding-top: 5px
+
+    &-container
+      center($containerMaxWidth, $containerPadding)
+
+    // Resetting first child elements margin-top to fix collapsing margins
+    &-text
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6
+        &:first-child
+          margin-top: 0

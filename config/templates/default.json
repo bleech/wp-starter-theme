@@ -21,7 +21,11 @@
               }
             }
           ],
-          "mainFooter": []
+          "mainFooter": [
+            {
+              "name": "BlockCookieNotification"
+            }
+          ]
         }
       }
     ]
