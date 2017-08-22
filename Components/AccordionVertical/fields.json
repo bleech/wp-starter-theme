@@ -1,0 +1,34 @@
+{
+  "layout": {
+    "name": "accordionVertical",
+    "label": "Accordion: Vertical",
+    "sub_fields": [
+      {
+        "name": "items",
+        "label": "Accordion Items",
+        "type": "repeater",
+        "required": 1,
+        "min": 1,
+        "layout": "row",
+        "button_label": "Add Item",
+        "sub_fields": [
+          {
+            "name": "titleText",
+            "label": "Title",
+            "type": "text",
+            "required": 1
+          },
+          {
+            "name": "contentHtml",
+            "label": "Content",
+            "type": "wysiwyg",
+            "delay": 1,
+            "media_upload": 0,
+            "toolbar": "full",
+            "required": 1
+          }
+        ]
+      }
+    ]
+  }
+}

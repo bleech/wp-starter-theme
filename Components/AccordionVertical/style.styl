@@ -1,0 +1,69 @@
+$rupture.scale = lookup('$globalRuptureScale') || (0 575px 767px 991px 1199px)
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+$colorBrand = lookup('$globalColorBrand') || #254fc7
+$buttonBackgroundColor = #f3f3f3
+$itemPadding = 15px
+$toggleIconHeight = 11px
+$toggleIconWidth = 13px
+
+.flyntComponent[is='flynt-accordion-vertical']
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .accordionVertical
+    center($containerMaxWidth, $containerPadding)
+
+    &-list
+      list-style: none
+      margin: 0
+      padding: 0
+
+    &-content
+      height: 0
+      overflow: hidden
+      padding: 0 $itemPadding
+      transition: height .3s ease
+
+      &-isSizing
+        transition: none
+
+    &-btn
+      -webkit-appearance: none
+      background-color: $buttonBackgroundColor
+      border: 0
+      cursor: pointer
+      display: block
+      font-size: 16px
+      outline: 0
+      padding: $itemPadding ($itemPadding + $toggleIconWidth) $itemPadding $itemPadding
+      position: relative
+      text-align: left
+      transition: color .3s ease
+      width: 100%
+
+      &:hover
+        color: $colorBrand
+
+    &-icon
+      display: block
+      float: right
+      height: $toggleIconHeight
+      position: absolute
+      right: $itemPadding
+      top: $itemPadding + 3px
+      width: $toggleIconWidth
+
+    &-item
+      &:not(:last-child)
+        margin-bottom: 5px
+
+      &-isExpanded
+        .accordionVertical-content
+          height: auto
+
+        .accordionVertical-btn
+          color: $colorBrand

@@ -1,0 +1,17 @@
+<div is="flynt-accordion-vertical" class="flyntComponent">
+  <div class="accordionVertical">
+    <ul class="accordionVertical-list">
+      {% for key, item in items %}
+        <li class="accordionVertical-item {% if loop.first %}accordionVertical-item-isExpanded{% endif %}">
+          <button class="accordionVertical-btn" aria-controls="item-{{key}}" aria-expanded="{{ loop.first ? 'true' : 'false' }}">
+            {{ item.titleText }}
+            <img class="accordionVertical-icon" src="{{ toggleIconSrc }}" alt="">
+          </button>
+          <div id="item-{{key}}" class="accordionVertical-content" aria-hidden="{{  loop.first ? 'false' : 'true' }}">
+            {{ item.contentHtml }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
