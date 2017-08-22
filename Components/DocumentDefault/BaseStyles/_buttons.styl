@@ -1,28 +1,44 @@
-$colorBrand = lookup('$globalColorBrand') || #254fc7
-$colorText = lookup('$globalColorText') || #153cab
+$colors = {
+  buttonDefaultBackground: #254fc7,
+  buttonDefaultColor: #fff,
+  buttonPrimaryBackground: #2e2e2e,
+  buttonPrimaryColor: #fff
+}
 
 [is='flynt-document-default']
-  .btn-primary
-    background-color: $colorBrand
-    color: $colorText
-
-    &:hover
-      background-color: $colorBrand
-      text-decoration: none
-
-  .btn
+  .btn,
+  a.btn
+    background: $colors.buttonDefaultBackground
     border-radius: 5px
-    border: 1px solid
+    border: 1px solid @background
+    color: $colors.buttonDefaultColor
     display: inline-block
     margin: 5px 0
     padding: 10px 14px
-    transition: background-color .3s ease
+    transition: background-color .3s ease, border-color .3s ease, color .3s ease
+    text-decoration: none
 
-    &--block
-      display: block
-      text-align: center
+    &:hover
+      background: darken($colors.buttonDefaultBackground, 15)
+      color: $colors.buttonDefaultColor
+      text-decoration: none
 
     &:focus,
     &:active
       box-shadow: none
       outline: 0
+
+    &--block
+      display: block
+      text-align: center
+
+    &--primary
+      background-color: $colors.buttonPrimaryBackground
+      border: 1px solid @background-color
+      color: $colors.buttonPrimaryColor
+
+      &:hover
+        background-color: darken($colors.buttonPrimaryBackground, 15)
+        border: 1px solid @background-color
+        color: $colors.buttonPrimaryColor
+        text-decoration: none

@@ -1,0 +1,60 @@
+$rupture.scale = lookup('$globalRuptureScale') || (0 575px 767px 991px 1199px)
+$rupture.anti-overlap = lookup('$globalRuptureAntiOverlap') || -1px
+$containerPadding = lookup('$globalContainerPadding') || 15px
+$containerMaxWidth = lookup('$globalContainerMaxWidth') || 1140px
+
+.flyntComponent[is='flynt-block-styleguide']
+  *,
+  *:before,
+  *:after
+    box-sizing: border-box
+
+  .styleguide
+    center($containerMaxWidth, $containerPadding)
+
+    &-section
+      clearfix()
+      padding: 30px
+
+      &:not(:last-child)
+        margin-bottom: 4em
+
+    &-sectionTitle
+      border-bottom: 3px solid #000
+      font-size: 14px
+      margin-bottom: 2em
+      opacity: .6
+      padding-bottom: 1em
+      text-transform: uppercase
+
+    &-trim
+      margin: 3em 0
+
+    &-color
+      column(1/4, $cycle: 5)
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .13)
+      height: 0
+      padding-bottom: 150px
+
+    &-colorName
+      margin: 5px
+      padding: 5px
+      display: inline-block
+      color: #fff
+      background: rgba(0, 0, 0, .5)
+
+    &-font:not(:last-child)
+      margin-bottom: 5em
+
+    &-fontName
+      font-size: 18px
+      font-weight: bold
+
+    &-fontDemo
+      font-size: 30px
+      margin-top: 15px
+
+    &-fontDemoCapitalized
+      font-size: 30px
+      margin-top: 15px
+      text-transform: uppercase

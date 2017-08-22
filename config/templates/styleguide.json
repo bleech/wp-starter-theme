@@ -1,0 +1,19 @@
+{
+  "name": "DocumentDefault",
+  "areas": {
+    "layout": [
+      {
+        "name": "LayoutSinglePost",
+        "areas": {
+          "mainHeader": [],
+          "pageComponents": [
+            {
+              "name": "BlockStyleguide"
+            }
+          ],
+          "mainFooter": []
+        }
+      }
+    ]
+  }
+}
