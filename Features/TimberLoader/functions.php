@@ -14,7 +14,10 @@ define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 add_filter('Flynt/renderComponent', function ($output, $componentName, $componentData, $areaHtml) {
     // get index file
     $componentManager = Flynt\ComponentManager::getInstance();
-    $filePath = $componentManager->getComponentFilePath($componentName, 'index.twig');
+    $fileName = 'index.twig';
+
+    // use $filePath to add component directories to Timber paths
+    $filePath = $componentManager->getComponentFilePath($componentName, $fileName);
 
     if (!is_file($filePath)) {
         trigger_error("Template not found: {$filePath}", E_USER_WARNING);
@@ -22,7 +25,6 @@ add_filter('Flynt/renderComponent', function ($output, $componentName, $componen
     }
 
     $addArea = function ($twig) use ($areaHtml) {
-
         $twig->addFunction(new Twig_SimpleFunction('area', function ($areaName) use ($areaHtml) {
             if (array_key_exists($areaName, $areaHtml)) {
                 return $areaHtml[$areaName];
@@ -41,10 +43,9 @@ add_filter('Flynt/renderComponent', function ($output, $componentName, $componen
 
     add_filter('timber/loader/paths', $returnTimberPaths);
 
-    $output = Timber::fetch($filePath, $componentData);
+    $output = Timber::fetch($fileName, $componentData);
 
     remove_filter('timber/loader/paths', $returnTimberPaths);
-
     remove_filter('get_twig', $addArea);
 
     return $output;
