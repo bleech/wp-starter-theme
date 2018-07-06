@@ -1,10 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const browserSync = require('browser-sync')
 const gulp = require('gulp')
-const gutil = require('gulp-util')
-const webpack = require('webpack')
-const handleErrors = require('../utils/handleErrors.js')
 
 let previousAssets = []
 let previousHash
@@ -28,6 +24,7 @@ function removeUnusedAssets (stats) {
 }
 
 const webpackTask = function (callback) {
+  const gutil = require('gulp-util')
   var initialCompile = false
   return function (err, stats) {
     if (err) {
@@ -35,6 +32,7 @@ const webpackTask = function (callback) {
     }
 
     if (stats.compilation.errors.length > 0) {
+      const handleErrors = require('../utils/handleErrors.js')
       stats.compilation.errors.forEach(function (error) {
         error.plugin = 'Webpack'
         handleErrors(error)
@@ -44,7 +42,10 @@ const webpackTask = function (callback) {
     if (previousHash !== stats.hash) {
       previousHash = stats.hash
       removeUnusedAssets(stats)
-      browserSync.reload()
+      if (global.watchMode) {
+        const browserSync = require('browser-sync')
+        browserSync.reload()
+      }
       gutil.log('[webpack:build] Completed\n' + stats.toString({
         assets: true,
         chunks: false,
@@ -64,11 +65,13 @@ const webpackTask = function (callback) {
 
 module.exports = function (webpackConfig, config) {
   gulp.task('webpack:build', function (callback) {
+    const webpack = require('webpack')
     config.webpack.production = true
     webpack(webpackConfig(config.webpack), webpackTask(callback))
   })
 
   gulp.task('webpack:watch', function (callback) {
+    const webpack = require('webpack')
     module.exports.watching = webpack(webpackConfig(config.webpack)).watch(null, webpackTask(callback))
   })
 }

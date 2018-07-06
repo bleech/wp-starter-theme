@@ -1,14 +1,7 @@
-const gulp = require('gulp')
-const gutil = require('gulp-util')
-const changedInPlace = require('gulp-changed-in-place')
-const stylint = require('gulp-stylint')
-const standard = require('gulp-standard')
-const phpcs = require('gulp-phpcs')
-const hasbin = require('hasbin')
-const path = require('path')
-const fs = require('fs')
-
 module.exports = function (config) {
+  const gulp = require('gulp')
+  const path = require('path')
+  const fs = require('fs')
   let phpCsAvailable
   let binaryPath = path.resolve(process.cwd(), config.lint.phpcs.binaryPath)
   delete config.lint.phpcs.binaryPath
@@ -17,6 +10,7 @@ module.exports = function (config) {
     fs.accessSync(binaryPath, fs.constants.F_OK | fs.constants.X_OK)
     phpCsAvailable = true
   } catch (error) {
+    const hasbin = require('hasbin')
     if (hasbin.sync('phpcs')) {
       phpCsAvailable = true
       binaryPath = ''
@@ -26,6 +20,7 @@ module.exports = function (config) {
   if (phpCsAvailable) {
     gulp.task('lint', ['lint:stylus', 'lint:js', 'lint:php'])
   } else {
+    const gutil = require('gulp-util')
     gutil.log(gutil.colors.yellow('PHPCS not found in PATH! Please install PHPCS to enable the php linter:'))
     gutil.log(gutil.colors.yellow.underline('https://github.com/squizlabs/PHP_CodeSniffer'))
 
@@ -33,6 +28,8 @@ module.exports = function (config) {
   }
 
   gulp.task('lint:stylus', function () {
+    const stylint = require('gulp-stylint')
+    const changedInPlace = require('gulp-changed-in-place')
     const task = gulp.src(config.lint.stylus)
     .pipe(changedInPlace({firstPass: true}))
     .pipe(stylint())
@@ -46,6 +43,8 @@ module.exports = function (config) {
   })
 
   gulp.task('lint:js', function () {
+    const standard = require('gulp-standard')
+    const changedInPlace = require('gulp-changed-in-place')
     let opts = {}
     if (!global.watchMode) {
       opts = {
@@ -61,6 +60,8 @@ module.exports = function (config) {
 
   gulp.task('lint:php', function (cb) {
     if (phpCsAvailable) {
+      const phpcs = require('gulp-phpcs')
+      const changedInPlace = require('gulp-changed-in-place')
       config.lint.phpcs.bin = binaryPath
       const task = gulp.src(config.lint.php)
       .pipe(changedInPlace({firstPass: true}))

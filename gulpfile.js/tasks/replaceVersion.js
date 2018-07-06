@@ -1,10 +1,10 @@
 const gulp = require('gulp')
-const gutil = require('gulp-util')
-const pjson = require('../../package.json')
-const replace = require('replace-in-file')
 
 module.exports = function (config) {
   gulp.task('replaceVersion', function (cb) {
+    const gutil = require('gulp-util')
+    const pjson = require('../../package.json')
+    const replace = require('replace-in-file')
     try {
       // read current version from package.json
       config.replaceVersion.php.to = pjson.version
