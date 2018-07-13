@@ -22,7 +22,8 @@ add_filter('acf/format_value/type=gallery', NS . 'formatGallery', 100);
 // Convert ACF Field of type post_object to a Timber\Post and add all ACF Fields of that Post
 add_filter('acf/format_value/type=post_object', NS . 'formatPostObject', 100);
 
-function renderTwigIndex($output, $componentName, $componentData, $areaHtml) {
+function renderTwigIndex($output, $componentName, $componentData, $areaHtml)
+{
     // get index file
     $componentManager = Flynt\ComponentManager::getInstance();
     $templateFilename = apply_filters('Flynt/Features/TimberLoader/templateFilename', 'index.twig');
@@ -63,14 +64,16 @@ function renderTwigIndex($output, $componentName, $componentData, $areaHtml) {
     return $output;
 }
 
-function formatImage($value) {
+function formatImage($value)
+{
     if (!empty($value)) {
         $value = new Image($value);
     }
     return $value;
 }
 
-function formatGallery($value) {
+function formatGallery($value)
+{
     if (!empty($value)) {
         $value = array_map(function ($image) {
             return new Image($image);
@@ -79,7 +82,8 @@ function formatGallery($value) {
     return $value;
 }
 
-function formatPostObject($value) {
+function formatPostObject($value)
+{
     if (is_array($value)) {
         $value = array_map(NS . 'convertToTimberPost', $value);
     } else {
