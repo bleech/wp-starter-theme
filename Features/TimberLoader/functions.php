@@ -14,7 +14,9 @@ define(__NAMESPACE__ . '\NS', __NAMESPACE__ . '\\');
 add_filter('Flynt/renderComponent', function ($output, $componentName, $componentData, $areaHtml) {
     // get index file
     $componentManager = Flynt\ComponentManager::getInstance();
-    $filePath = $componentManager->getComponentFilePath($componentName, 'index.twig');
+    $templateFilename = apply_filters('Flynt/Features/TimberLoader/templateFilename', 'index.twig');
+    $templateFilename = apply_filters("Flynt/Features/TimberLoader/templateFilename?name=${componentName}", $templateFilename);
+    $filePath = $componentManager->getComponentFilePath($componentName, $templateFilename);
 
     if (!is_file($filePath)) {
         trigger_error("Template not found: {$filePath}", E_USER_WARNING);
