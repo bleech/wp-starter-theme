@@ -47,12 +47,15 @@ const webpackTask = function (callback) {
         browserSync.reload()
       }
       gutil.log('[webpack:build] Completed\n' + stats.toString({
-        assets: true,
-        chunks: false,
+        assets: false,
+        builtAt: false,
         chunkModules: false,
+        chunks: false,
         colors: true,
+        entrypoints: false,
         hash: false,
-        timings: false,
+        modules: false,
+        timings: true,
         version: false
       }))
     }
