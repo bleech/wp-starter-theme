@@ -24,11 +24,12 @@ function removeUnusedAssets (stats) {
 }
 
 const webpackTask = function (callback) {
-  const gutil = require('gulp-util')
+  const log = require('fancy-log')
+  const PluginError = require('plugin-error')
   var initialCompile = false
   return function (err, stats) {
     if (err) {
-      throw new gutil.PluginError('webpack:build', err)
+      throw new PluginError('webpack:build', err)
     }
 
     if (stats.compilation.errors.length > 0) {
@@ -46,7 +47,7 @@ const webpackTask = function (callback) {
         const browserSync = require('browser-sync')
         browserSync.reload()
       }
-      gutil.log('[webpack:build] Completed\n' + stats.toString({
+      log('[webpack:build] Completed\n' + stats.toString({
         assets: false,
         builtAt: false,
         chunkModules: false,
