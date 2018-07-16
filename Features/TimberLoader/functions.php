@@ -29,6 +29,7 @@ function renderTwigIndex($output, $componentName, $componentData, $areaHtml)
     $templateFilename = apply_filters('Flynt/Features/TimberLoader/templateFilename', 'index.twig');
     $templateFilename = apply_filters("Flynt/Features/TimberLoader/templateFilename?name=${componentName}", $templateFilename);
     $filePath = $componentManager->getComponentFilePath($componentName, $templateFilename);
+    $relativeFilePath = ltrim(str_replace(get_template_directory(), '', $filePath), '/');
 
     if (!is_file($filePath)) {
         trigger_error("Template not found: {$filePath}", E_USER_WARNING);
@@ -55,7 +56,7 @@ function renderTwigIndex($output, $componentName, $componentData, $areaHtml)
 
     add_filter('timber/loader/paths', $returnTimberPaths);
 
-    $output = Timber::fetch($filePath, $componentData);
+    $output = Timber::fetch($relativeFilePath, $componentData);
 
     remove_filter('timber/loader/paths', $returnTimberPaths);
 
