@@ -51,7 +51,8 @@
     "hard-source-webpack-plugin": "^0.11.1",
     "hasbin": "^1.2.3",
     "jeet": "^7.0.0",
-    "normalize.css": "^7.0.0",
+    "js-cookie": "^2.1.4",
+    "normalize.css": "^6.0.0",
     "picturefill": "^3.0.2",
     "plugin-error": "^1.0.1",
     "replace-in-file": "^2.6.0",
@@ -84,7 +85,6 @@
       "postbump": "gulp replaceVersion && git add ."
     }
   },
-  "dependencies": {},
   "browserslist": [
     "> 1%",
     "last 2 versions",
