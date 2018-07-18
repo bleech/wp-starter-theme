@@ -81,14 +81,13 @@ function checkForCssVariablesStyl (file, config) {
   if (config.watch.hardReloadOnStylFiles.includes(file.relative)) {
     globby(config.stylus, {}).then((files) => {
       Promise.all(
-        files.reduce(function (acc, file) {
-          acc.push(new Promise((resolve, reject) => {
+        files.map(function (file) {
+          return new Promise((resolve, reject) => {
             touch(file, {}, (err) => {
               if (err) reject(err)
               resolve(file)
             })
-          }))
-          return acc
+          })
         }, [])
       )
     })
