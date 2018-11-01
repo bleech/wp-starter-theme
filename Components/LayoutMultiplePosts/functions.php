@@ -5,11 +5,11 @@ namespace Flynt\Components\LayoutMultiplePosts;
 use Timber\Timber;
 use Flynt\Features\Components\Component;
 
-add_action('wp_enqueue_scripts', function () {
-    Component::enqueueAssets('LayoutMultiplePosts');
-});
-
 add_filter('Flynt/addComponentData?name=LayoutMultiplePosts', function ($data) {
+    add_action('wp_enqueue_scripts', function () {
+        Component::enqueueAssets('LayoutMultiplePosts');
+    });
+
     $query = !empty($data['query']) ? $data['query'] : false;
     $posts = Timber::get_posts($query);
     if (!empty($posts)) {

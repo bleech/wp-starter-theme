@@ -5,11 +5,11 @@ namespace Flynt\Components\LayoutSinglePost;
 use Timber\Timber;
 use Flynt\Features\Components\Component;
 
-add_action('wp_enqueue_scripts', function () {
-    Component::enqueueAssets('LayoutSinglePost');
-});
-
 add_filter('Flynt/addComponentData?name=LayoutSinglePost', function ($data) {
+    add_action('wp_enqueue_scripts', function () {
+        Component::enqueueAssets('LayoutSinglePost');
+    });
+
     $query = !empty($data['query']) ? $data['query'] : false;
     $post = Timber::get_post($query);
     if (!empty($post)) {
